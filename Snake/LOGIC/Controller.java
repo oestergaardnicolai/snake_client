@@ -44,6 +44,7 @@ public class Controller
         frame.getRateGame().addActionListener(new RateGameActionListener());
         frame.getInstructions().addActionListener(new InstructionsActionListener());
         frame.getHowToPlay().addActionListener(new HowToPlayActionListener());
+        frame.getSignUp().addActionListener(new SignUpActionListener());
         frame.show(Frame.LOGIN);
     }
 
@@ -77,6 +78,10 @@ public class Controller
             if (e.getSource() == frame.getUserLogin().getBtnSignIn()){
 
                 frame.show(Frame.MENU);
+            }
+            else if (e.getSource() == frame.getUserLogin().getBtnSignUp())
+            {
+                frame.show(Frame.SIGNUP);
             }
         }
     }
@@ -214,4 +219,16 @@ public class Controller
             }
         }
     }
+
+    private class SignUpActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            if(e.getSource() == frame.getSignUp().getBtnBack())
+            {
+                frame.show(Frame.LOGIN);
+            }
+        }
+    }
+
 }

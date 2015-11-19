@@ -15,11 +15,15 @@ public class UserLogin extends JPanel
     private JLabel jlPassword;
     private JTextField Password;
     private JButton btnSignIn;
+    private JButton btnSignUp;
+    private JLabel jlSnake;
+    private JLabel jlBg;
 
     public UserLogin()
     {
         Condition co = new Condition();
 
+     /*
         int screenWidth = co.getScreenWidth();
         int screenHeight = co.getScreenHeight();
 
@@ -31,8 +35,9 @@ public class UserLogin extends JPanel
 
         System.out.println(txt_width);
         System.out.println(txt_height);
+        */
         setLayout(new FlowLayout());
-        setBackground(Color.CYAN);
+        setBackground(Color.GREEN);
 
         jlUserLogin = new JLabel("LOGIN");
         jlUserLogin.setBounds(419, 155, 78, 33);
@@ -43,8 +48,8 @@ public class UserLogin extends JPanel
         add(jlUserLogin);
 
         Username = new JTextField("Enter username here");
-        Username.setBounds(340, 333, txt_width, txt_height);
-        Username.setFont(new Font("Italic", Font.ITALIC, 33));
+        Username.setBounds(340, 333, 100, 100);
+        Username.setFont(new Font("Italic", Font.ITALIC, 15));
         add(Username);
         Username.setColumns(25);
 
@@ -53,14 +58,26 @@ public class UserLogin extends JPanel
         add(jlPassword);
 
         Password = new JTextField("Enter password here");
-        Password.setBounds(340, 496, txt_width, txt_height);
-        Password.setFont(new Font("Bold", Font.BOLD, 33));
+        Password.setBounds(340, 496, 100, 100);
+        Password.setFont(new Font("Bold", Font.BOLD, 15));
         add(Password);
-        Password.setColumns(10);
+        Password.setColumns(11);
 
         btnSignIn = new JButton("Sign in ->");
         btnSignIn.setBounds(372, 621, 171, 41);
         add(btnSignIn);
+
+        btnSignUp = new JButton("Sign up ->");
+        add(btnSignUp);
+
+        jlSnake = new JLabel("SNAKE");
+        jlSnake.setBounds(300, 300, 300, 300);
+        add(jlSnake);
+
+        Icon bg = new ImageIcon(getClass().getResource("bg.png"));
+        jlBg = new JLabel("", bg, JLabel.CENTER);
+        jlBg.setBounds(100, 100, 100, 100);
+        add(jlBg);
 
 
     }
@@ -80,8 +97,14 @@ public class UserLogin extends JPanel
         return btnSignIn;
     }
 
+    public JButton getBtnSignUp()
+    {
+        return btnSignUp;
+    }
+
     public void addActionListener(ActionListener al)
     {
         btnSignIn.addActionListener(al);
+        btnSignUp.addActionListener(al);
     }
 }

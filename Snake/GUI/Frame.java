@@ -20,6 +20,7 @@ public class Frame extends JFrame
     public static final String RATEGAME = "name_12345678912345";
     public static final String INSTRUCTIONS ="name_54321987654321";
     public static final String HOWTOPLAY ="name_01234567891234";
+    public static final String SIGNUP ="name_111111111111111";
     private JPanel contentPane;
     private UserLogin userlogin;
     private CardLayout c;
@@ -32,6 +33,7 @@ public class Frame extends JFrame
     private RateGame rateGame;
     private Instructions instructions;
     private HowToPlay howtoplay;
+    private SignUp signup;
 
     /**
      * Create the frame.
@@ -83,6 +85,9 @@ public class Frame extends JFrame
         howtoplay = new HowToPlay();
         contentPane.add(howtoplay, HOWTOPLAY);
 
+        signup = new SignUp();
+        contentPane.add(signup, SIGNUP);
+
         c = (CardLayout) getContentPane().getLayout();
     }
 
@@ -125,6 +130,10 @@ public class Frame extends JFrame
         return howtoplay;
     }
 
+    public SignUp getSignUp()
+    {
+        return signup;
+    }
 
     public void show(String card){
         c.show(this.getContentPane(), card);
