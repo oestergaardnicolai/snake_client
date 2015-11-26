@@ -15,7 +15,7 @@ public class UserLogin extends JPanel
     private JLabel jlUsername;
     private JTextField Username;
     private JLabel jlPassword;
-    private JTextField Password;
+    private JPasswordField Password;
     private JButton btnSignIn;
     private JButton btnSignUp;
     private JLabel jlSnake;
@@ -42,7 +42,7 @@ public class UserLogin extends JPanel
         jlPassword = new JLabel("Password");
         add(jlPassword);
 
-        Password = new JTextField("Enter password here");
+        Password = new JPasswordField("Enter password here");
         Password.setFont(new Font("Bold", Font.BOLD, 15));
         add(Password);
         Password.setColumns(11);

@@ -11,16 +11,16 @@ import javax.swing.border.*;
 public class Frame extends JFrame
 {
 
-    public static final String DELETEGAME = "name_514131298765432";
-    public static final String PLAYSNAKE = "name_998877665544332";
-    public static final String JOINGAME = "name_112233445566778";
-    public static final String HIGHSCORE = "name_098765432109876";
-    public static final String MENU = "name_123456789012344";
-    public static final String LOGIN = "name_151515151515151";
-    public static final String RATEGAME = "name_12345678912345";
-    public static final String INSTRUCTIONS ="name_54321987654321";
-    public static final String HOWTOPLAY ="name_01234567891234";
-    public static final String SIGNUP ="name_111111111111111";
+    public static final String DELETEGAME = "Delete_Game";
+    public static final String PLAYSNAKE = "Play_Snake";
+    public static final String JOINGAME = "Join_Game";
+    public static final String HIGHSCORE = "Highscore";
+    public static final String MENU = "Menu";
+    public static final String LOGIN = "Login";
+    public static final String RATEGAME = "Rate_Game";
+    public static final String INSTRUCTIONS ="Instructions";
+    public static final String HOWTOPLAY ="How_To_Play";
+    public static final String SIGNUP ="Sign_Up";
     private JPanel contentPane;
     private UserLogin userlogin;
     private CardLayout c;
