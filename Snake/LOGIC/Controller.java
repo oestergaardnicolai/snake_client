@@ -53,7 +53,7 @@ public class Controller
         try {
 
 
-            socket = new Socket("localhost", 45782);
+            socket = new Socket("localhost", 32953);
 
             printWriter = new PrintWriter(socket.getOutputStream(),true);
             printWriter.println("Woop WOop");
@@ -71,15 +71,15 @@ public class Controller
 
     private class UserLoginActionListener implements ActionListener{
 
-        public void actionPerformed(ActionEvent e){
+        public void actionPerformed(ActionEvent event){
 
 
 
-            if (e.getSource() == frame.getUserLogin().getBtnSignIn()){
+            if (event.getSource() == frame.getUserLogin().getBtnSignIn()){
 
                 frame.show(Frame.MENU);
             }
-            else if (e.getSource() == frame.getUserLogin().getBtnSignUp())
+            else if (event.getSource() == frame.getUserLogin().getBtnSignUp())
             {
                 frame.show(Frame.SIGNUP);
             }
@@ -88,31 +88,35 @@ public class Controller
 
     private class UserMenuActionListener implements ActionListener{
 
-        public void actionPerformed(ActionEvent e){
+        public void actionPerformed(ActionEvent event){
 
-            if (e.getSource() == frame.getUserMenu().getBtnDeleteGame()){
+            if (event.getSource() == frame.getUserMenu().getBtnDeleteGame())
+            {
 
             }
-            else if (e.getSource() == frame.getUserMenu().getBtnHighscores()){
+            else if (event.getSource() == frame.getUserMenu().getBtnHighscores())
+            {
 
                 frame.show(Frame.HIGHSCORE);
 
             }
-            else if (e.getSource() == frame.getUserMenu().getBtnLogout()){
+            else if (event.getSource() == frame.getUserMenu().getBtnLogout())
+            {
 
                 frame.show(Frame.LOGIN);
 
             }
-            else if (e.getSource() == frame.getUserMenu().getBtnPlay()){
+            else if (event.getSource() == frame.getUserMenu().getBtnPlay())
+            {
 
                 frame.show(Frame.PLAYSNAKE);
 
             }
-            else if (e.getSource() == frame.getUserMenu().getBtnRateGame())
+            else if (event.getSource() == frame.getUserMenu().getBtnRateGame())
             {
                 frame.show(Frame.RATEGAME);
             }
-            else if (e.getSource() == frame.getUserMenu().getBtnInstructions())
+            else if (event.getSource() == frame.getUserMenu().getBtnInstructions())
             {
                 frame.show(Frame.INSTRUCTIONS);
             }
@@ -121,28 +125,33 @@ public class Controller
         }
     }
 
-    private class HighscoreActionListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+    private class HighscoreActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
 
-            if (e.getSource() == frame.getHighscore().getBtnBack()){
+            if (event.getSource() == frame.getHighscore().getBtnBack())
+            {
                 frame.show(Frame.MENU);
             }
 
         }
     }
 
-    private class  JoinGameActionListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+    private class  JoinGameActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
 
-            if(e.getSource() == frame.getJoinGame().getBtnBack())
+            if(event.getSource() == frame.getJoinGame().getBtnBack())
             {
                 frame.show(Frame.PLAYSNAKE);
             }
-            else if(e.getSource() == frame.getJoinGame())
+            else if(event.getSource() == frame.getJoinGame())
             {
 
             }
-            else if(e.getSource() == frame.getJoinGame().getBtnCancel())
+            else if(event.getSource() == frame.getJoinGame().getBtnCancel())
             {
                 frame.show(Frame.PLAYSNAKE);
             }
@@ -150,17 +159,17 @@ public class Controller
     }
 
     private class PlayActionListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+        public void actionPerformed(ActionEvent event){
 
-            if(e.getSource() == frame.getPlay().getBtnBack()){
+            if(event.getSource() == frame.getPlay().getBtnBack()){
                 frame.show(Frame.MENU);
 
             }
-            else if(e.getSource() == frame.getPlay().getBtnCreateGame())
+            else if(event.getSource() == frame.getPlay().getBtnCreateGame())
             {
 
             }
-            else if (e.getSource() == frame.getPlay().getBtnJoinGame()){
+            else if (event.getSource() == frame.getPlay().getBtnJoinGame()){
                 frame.show(Frame.JOINGAME);
             }
 
@@ -168,13 +177,13 @@ public class Controller
     }
 
     private class DeleteGameActionListener implements ActionListener {
-        public void actionPerformed(ActionEvent e){
+        public void actionPerformed(ActionEvent event){
 
-            if(e.getSource() == frame.getDeleteGame().getBtnBack())
+            if(event.getSource() == frame.getDeleteGame().getBtnBack())
             {
 
             }
-            else if(e.getSource() == frame.getDeleteGame().getBtnDelete())
+            else if(event.getSource() == frame.getDeleteGame().getBtnDelete())
             {
 
             }
@@ -184,9 +193,9 @@ public class Controller
 
     private class RateGameActionListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e)
+        public void actionPerformed(ActionEvent event)
         {
-            if(e.getSource() == frame.getRateGame().getBtnBack())
+            if(event.getSource() == frame.getRateGame().getBtnBack())
             {
                 frame.show(Frame.MENU);
             }
@@ -196,13 +205,13 @@ public class Controller
 
     private class InstructionsActionListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e)
+        public void actionPerformed(ActionEvent event)
         {
-            if(e.getSource() == frame.getInstructions().getBtnBack())
+            if(event.getSource() == frame.getInstructions().getBtnBack())
             {
                 frame.show(Frame.MENU);
             }
-            else if(e.getSource() == frame.getInstructions().getBtnHowToPlay())
+            else if(event.getSource() == frame.getInstructions().getBtnHowToPlay())
             {
                 frame.show(Frame.HOWTOPLAY);
             }
@@ -211,24 +220,22 @@ public class Controller
 
     private class HowToPlayActionListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e)
+        public void actionPerformed(ActionEvent event)
         {
-            if(e.getSource() == frame.getHowToPlay().getBtnBack())
+            if(event.getSource() == frame.getHowToPlay().getBtnBack())
             {
                 frame.show(Frame.INSTRUCTIONS);
             }
         }
     }
 
-    private class SignUpActionListener implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            if(e.getSource() == frame.getSignUp().getBtnBack())
-            {
+    private class SignUpActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            if (event.getSource() == frame.getSignUp().getBtnBack()) {
                 frame.show(Frame.LOGIN);
             }
         }
     }
+
 
 }

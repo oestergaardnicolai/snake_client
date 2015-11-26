@@ -58,45 +58,10 @@ public class UserLogin extends JPanel
 
         Icon bg = new ImageIcon(getClass().getResource("bg.png"));
         jlBg = new JLabel("", bg, JLabel.CENTER);
+        jlBg.setLayout(new FlowLayout(FlowLayout.CENTER));
         add(jlBg);
 
-        //Test of password
-        JFrame f = new JFrame("Login Required");
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        f.setSize(500, 400);
-        f.setResizable(false);
-        f.setLocationByPlatform(true);
-        f.setVisible(true);
-
-        showLogin(f);
-
-
     }
-
-
-    //Test of password
-    private void showLogin(JFrame frame) {
-        JPanel p = new JPanel(new BorderLayout(5,5));
-
-        JPanel labels = new JPanel(new GridLayout(0,1,2,2));
-        labels.add(new JLabel("User Name", SwingConstants.RIGHT));
-        labels.add(new JLabel("Password", SwingConstants.RIGHT));
-        p.add(labels, BorderLayout.WEST);
-
-        JPanel controls = new JPanel(new GridLayout(0,1,2,2));
-        JTextField username = new JTextField("Nicolai login");
-        controls.add(username);
-        JPasswordField password = new JPasswordField();
-        password.addAncestorListener(new RequestFocusListener(false));
-        controls.add(password);
-        p.add(controls, BorderLayout.CENTER);
-
-        //Prints message to the dialog box
-        JOptionPane.showMessageDialog(
-                frame, p, "Log In", JOptionPane.QUESTION_MESSAGE);
-    }
-
 
     public JTextField getUsername()
     {
@@ -124,37 +89,4 @@ public class UserLogin extends JPanel
         btnSignUp.addActionListener(al);
     }
 
-    //Class and inner Constructor to test of password
-    class RequestFocusListener implements AncestorListener
-    {
-        private boolean removeListener;
-
-
-        public RequestFocusListener()
-        {
-            this(true);
-        }
-
-
-        public RequestFocusListener(boolean removeListener)
-        {
-            this.removeListener = removeListener;
-        }
-
-        @Override
-        public void ancestorAdded(AncestorEvent e)
-        {
-            JComponent component = e.getComponent();
-            component.requestFocusInWindow();
-
-            if (removeListener)
-                component.removeAncestorListener( this );
-        }
-
-        @Override
-        public void ancestorMoved(AncestorEvent e) {}
-
-        @Override
-        public void ancestorRemoved(AncestorEvent e) {}
-    }
 }

@@ -14,22 +14,26 @@ public class Condition extends JPanel
     private int screenWidth = (int) screenSize.getWidth();
     private int screenHeight = (int) screenSize.getHeight();
 
-    private int frameWidth = screenWidth/2;
-    private int frameHeight = screenHeight/2;
+    private int frameWidth = screenWidth;
+    private int frameHeight = screenHeight;
 
-    public int getScreenHeight() {
+    public int getScreenHeight()
+    {
         return screenHeight;
     }
 
-    public int getScreenWidth() {
+    public int getScreenWidth()
+    {
         return screenWidth;
     }
 
-    public int getFrameHeight(){
+    public int getFrameHeight()
+    {
         return frameHeight;
     }
 
-    public int getFrameWidth() {
+    public int getFrameWidth()
+    {
         return frameWidth;
     }
 }

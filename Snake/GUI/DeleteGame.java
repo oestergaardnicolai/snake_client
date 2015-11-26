@@ -15,7 +15,8 @@ public class DeleteGame extends JPanel
     private JButton btnDelete;
     private JButton btnBack;
 
-    public DeleteGame() {
+    public DeleteGame()
+    {
 
         setLayout(null);
 
@@ -43,19 +44,23 @@ public class DeleteGame extends JPanel
 
     }
 
-    public JTextField getInsertgameid() {
+    public JTextField getInsertgameid()
+    {
         return Insertgameid;
     }
 
-    public JButton getBtnDelete() {
+    public JButton getBtnDelete()
+    {
         return btnDelete;
     }
 
-    public JButton getBtnBack() {
+    public JButton getBtnBack()
+    {
         return btnBack;
     }
 
-    public void addActionListener(ActionListener al){
+    public void addActionListener(ActionListener al)
+    {
 
         btnDelete.addActionListener(al);
         btnBack.addActionListener(al);

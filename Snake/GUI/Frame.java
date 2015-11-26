@@ -38,7 +38,8 @@ public class Frame extends JFrame
     /**
      * Create the frame.
      */
-    public Frame() {
+    public Frame()
+    {
 
         contentPane = new JPanel();
         Condition co = new Condition();
@@ -91,27 +92,33 @@ public class Frame extends JFrame
         c = (CardLayout) getContentPane().getLayout();
     }
 
-    public UserLogin getUserLogin() {
+    public UserLogin getUserLogin()
+    {
         return userlogin;
     }
 
-    public UserMenu getUserMenu() {
+    public UserMenu getUserMenu()
+    {
         return usermenu;
     }
 
-    public Highscore getHighscore() {
+    public Highscore getHighscore()
+    {
         return highscore;
     }
 
-    public JoinGame getJoinGame() {
+    public JoinGame getJoinGame()
+    {
         return joinGame;
     }
 
-    public Play getPlay() {
+    public Play getPlay()
+    {
         return play;
     }
 
-    public DeleteGame getDeleteGame() {
+    public DeleteGame getDeleteGame()
+    {
         return deleteGame;
     }
 
@@ -135,7 +142,8 @@ public class Frame extends JFrame
         return signup;
     }
 
-    public void show(String card){
+    public void show(String card)
+    {
         c.show(this.getContentPane(), card);
     }
 

@@ -7,6 +7,7 @@ import com.sun.jersey.api.client.WebResource;
 /**
  * Created by nicolaiostergaard on 26/11/15.
  */
+
 public class ServerConnection {
 
 
@@ -63,6 +64,5 @@ public class ServerConnection {
 
         String output = response.getEntity(String.class);
         System.out.println(output);
-
     }
 }
