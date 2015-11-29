@@ -1,11 +1,12 @@
 package snake_client.Snake.GUI;
-
+/*
 import javax.swing.*;
 import java.awt.event.*;
 
 /**
  * Created by nicolaiostergaard on 13/11/15.
- */
+ 
+
 public class DeleteGame extends JPanel
 {
 
@@ -69,3 +70,4 @@ public class DeleteGame extends JPanel
 
 
 }
+*/

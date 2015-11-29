@@ -9,4 +9,21 @@ import javax.swing.*;
 public class CreateGame extends JPanel 
 {
 
+    private JLabel jlCreateGame;
+
+    private JLabel jlfield_name;
+    private JTextField field_name;
+
+    private JLabel jlcontrols;
+    private JTextField controls;
+
+    private JLabel jlmapsize;
+    private JTextField mapsize;
+
+    private JButton btnBack;
+
+    public CreateGame()
+    {
+
+    }
 }

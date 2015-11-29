@@ -1,5 +1,6 @@
-package snake_client.Snake.SDK;
+package snake_client.Snake.SDKCon;
 
+import snake_client.Snake.SDK.User;
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -11,7 +12,7 @@ import org.json.simple.parser.ParseException;
 
 /**
  * Created by nicolaiostergaard on 26/11/15.
-*/
+ */
 
 public class ServerConnection {
 
@@ -66,11 +67,11 @@ public class ServerConnection {
         WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
         ClientResponse response = webResource.type("application/json").post(ClientResponse.class, json);
 
-        /*if (response.getStatus() != 200 && response.getStatus() != 201) {
+        if (response.getStatus() != 200 && response.getStatus() != 201) {
             throw new RuntimeException("Failed : HTTP error code : "
                     + response.getStatus());
         }
-        */
+
 
         if(response != null)
         {
@@ -78,24 +79,19 @@ public class ServerConnection {
         }
         return "";
     }
-    public String stringMessageParser(String json)
+
+
+    public User ui(User user1)
     {
-        JSONParser jpo = new JSONParser();
+        String plo = new Gson().toJson(user1, User.class);
+        System.out.println("" + plo);
+        String response;
 
-        String message = "";
-
-        try {
-            Object o = jpo.parse(json);
-            JSONObject jo = (JSONObject) o;
-
-            message = ((String ) jo.get("message"));
-        }
-
-        catch
+        try
         {
-            event.printStackTrace();
+            response =
         }
-        return message;
+
     }
 }
 

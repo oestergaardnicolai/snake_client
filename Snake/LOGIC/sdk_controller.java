@@ -3,7 +3,7 @@ package snake_client.Snake.LOGIC;
 import snake_client.Snake.SDK.User;
 
 import com.google.gson.Gson;
-import snake_client.Snake.SDK.ServerConnection;
+import snake_client.Snake.SDKCon.ServerConnection;
 
 /**
  * Created by nicolaiostergaard on 27/11/15.

@@ -58,39 +58,39 @@ public class User
         return type;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int _id) {
+        id = _id;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirst_name(String _first_name) {
+        first_name = _first_name;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLast_name(String _last_name) {
+        last_name = _last_name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String _email) {
+        email = _email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String _username) {
+        username = _username;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String _password) {
+        password = _password;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
+    public void setCreated(Date _created) {
+        created = _created;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(String _status) {
+        status = _status;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String _type) {
+        type = _type;
     }
 }
