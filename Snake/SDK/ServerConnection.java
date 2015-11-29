@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 
 /**
  * Created by nicolaiostergaard on 26/11/15.
- */
+*/
 
 public class ServerConnection {
 
@@ -69,8 +69,8 @@ public class ServerConnection {
         /*if (response.getStatus() != 200 && response.getStatus() != 201) {
             throw new RuntimeException("Failed : HTTP error code : "
                     + response.getStatus());
-        }*/
-
+        }
+        */
 
         if(response != null)
         {
@@ -98,3 +98,4 @@ public class ServerConnection {
         return message;
     }
 }
+
