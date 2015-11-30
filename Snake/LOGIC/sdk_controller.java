@@ -1,3 +1,4 @@
+/*
 package snake_client.Snake.LOGIC;
 
 import snake_client.Snake.SDK.User;
@@ -7,7 +8,7 @@ import snake_client.Snake.SDKCon.ServerConnection;
 
 /**
  * Created by nicolaiostergaard on 27/11/15.
- */
+
 
 public class sdk_controller {
 
@@ -24,3 +25,4 @@ public class sdk_controller {
         sc.post()
     }
 }
+*/

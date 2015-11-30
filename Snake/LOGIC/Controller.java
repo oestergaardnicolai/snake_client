@@ -1,16 +1,26 @@
 package snake_client.Snake.LOGIC;
 
+//GUI imports
 import snake_client.Snake.GUI.Frame;
-import snake_client.Snake.Test.User;
 
-import javax.swing.*;
+//SDK imports
+import snake_client.Snake.SDK.User;
+import snake_client.Snake.SDK.Game;
+import snake_client.Snake.SDK.UserInfo;
+
+//SDKCon imports
+import snake_client.Snake.SDKCon.ServerConnection;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
+
+import com.google.gson.Gson;
+import java.net.UnknownHostException;
+import java.io.IOException;
+import javax.swing.*;
 
 /**
  * Created by nicolaiostergaard on 13/11/15.
@@ -23,11 +33,17 @@ public class Controller
     private static Scanner sc;
 
     private Frame frame;
+    //ServerConnection sco = new ServerConnection();
+
+    User uo = new User();
+    UserInfo uio = new UserInfo();
+
 
     public Controller(){
 
         frame = new Frame();
         frame.setVisible(true);
+
 
     }
 
@@ -48,12 +64,13 @@ public class Controller
         frame.show(Frame.LOGIN);
     }
 
+
     public void socketMethod(){
 
         try {
 
 
-            socket = new Socket("localhost", 32953);
+            socket = new Socket("localhost", 22381);
 
             printWriter = new PrintWriter(socket.getOutputStream(),true);
             printWriter.println("Woop WOop");
