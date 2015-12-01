@@ -110,7 +110,7 @@ public class Controller
 
             if (event.getSource() == frame.getUserMenu().getBtnDeleteGame())
             {
-
+                frame.show(Frame.DELETEGAME);
             }
             else if (event.getSource() == frame.getUserMenu().getBtnHighscores())
             {
@@ -199,7 +199,7 @@ public class Controller
 
             if(event.getSource() == frame.getDeleteGame().getBtnBack())
             {
-
+                frame.show(Frame.MENU);
             }
             else if(event.getSource() == frame.getDeleteGame().getBtnDelete())
             {

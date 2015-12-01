@@ -40,7 +40,7 @@ public class DeleteGame extends JPanel
 
         Icon back = new ImageIcon(getClass().getResource("back.png"));
         btnBack = new JButton("<- Back", back);
-        btnBack.setBounds(26, 774, 171, 41);
+        btnBack.setBounds(83, 649, 171, 41);
         add(btnBack);
 
     }

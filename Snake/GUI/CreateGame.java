@@ -27,7 +27,7 @@ public class CreateGame extends JPanel
     public CreateGame()
     {
         setLayout(null);
-        setBackground(Color.DARK_GRAY);
+        setBackground(Color.GRAY);
 
         jlCreateGame = new JLabel("Create Game");
         jlCreateGame.setBounds(449, 57, 161, 33);
