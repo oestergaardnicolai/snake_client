@@ -1,17 +1,20 @@
 package snake_client.Snake.SDKCon;
 
+import org.json.simple.parser.JSONParser;
 import snake_client.Snake.SDK.User;
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import snake_client.Snake.SDK.Scores;
-import snake_client.Snake.SDK.Response;
+import snake_client.Snake.GUI.Frame;
 
-/*import org.codehaus.jettison.json.JSONObject;
-import org.json.simple.parser.JSONParser;
+import java.sql.Date;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-*/
+
+import javax.swing.*;
+
 
 /**
  * Created by nicolaiostergaard on 26/11/15.
@@ -30,13 +33,13 @@ public class ServerConnection {
     private String hostAddress;
     private int port;
 
-    public void setHostAddress(String hostAddress) {
+/*    public void setHostAddress(String hostAddress) {
         this.hostAddress = hostAddress;
     }
 
     public void setPort(int port) {
         this.port = port;
-    }
+    }*/
 
     public String getHostAddress() {
         return hostAddress;
@@ -66,22 +69,50 @@ public class ServerConnection {
 
     }
 
-    public void post(String json, String path){
+    public String post(String json, String path, Frame frame){
 
-        Client client = Client.create();
-
-        WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
-        ClientResponse response = webResource.type("application/json").post(ClientResponse.class, json);
+        try {
 
 
-        if (response.getStatus() != 200 && response.getStatus() != 201){
-            throw new RuntimeException("Failed : HTTP error code : "
-                    + response.getStatus());
+            Client client = Client.create();
+
+            WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
+            ClientResponse response = webResource.type("application/json").post(ClientResponse.class, json);
+
+
+            String output = response.getEntity(String.class);
+            System.out.println(output);
+            return output;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "HTTP failed", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        String output = response.getEntity(String.class);
-        System.out.println(output);
+        return "";
+    }
 
+
+    public void parser(String Json, User user)
+    {
+        JSONParser jpo = new JSONParser();
+
+        try
+        {
+            Object o = jpo.parse(Json);
+            JSONObject jsonObject = (JSONObject) o;
+
+            user.setEmail((String) jsonObject.get("Email"));
+            user.setFirst_name((String) jsonObject.get("FirstName"));
+            user.setLast_name((String) jsonObject.get("LastName"));
+            user.setStatus((String) jsonObject.get("Active"));
+            //user.setCreated((Date) jsonObject.get("Created"));
+        }
+        catch(ParseException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
 

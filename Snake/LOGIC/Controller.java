@@ -2,6 +2,7 @@ package snake_client.Snake.LOGIC;
 
 //GUI imports
 import com.sun.corba.se.spi.activation.Server;
+import org.json.simple.JSONObject;
 import snake_client.Snake.GUI.Frame;
 
 //SDK imports
@@ -22,6 +23,7 @@ import com.google.gson.Gson;
 import java.net.UnknownHostException;
 import java.io.IOException;
 import javax.swing.*;
+import org.json.simple.parser.JSONParser;
 
 /**
  * Created by nicolaiostergaard on 13/11/15.
@@ -35,8 +37,8 @@ public class Controller
     private ServerConnection sc;
 
     private Frame frame;
-    //ServerConnection sco = new ServerConnection();
-
+    ServerConnection sco = new ServerConnection();
+    User currentUser = new User();
     User uo = new User();
     UserInfo uio = new UserInfo();
 
@@ -102,7 +104,11 @@ public class Controller
 
                 getApi();
 
-                frame.show(Frame.MENU);
+                if (loginReg()) {
+
+                    frame.show(Frame.MENU);
+                }
+                else System.out.println("Forkert");
             }
             else if (event.getSource() == frame.getUserLogin().getBtnSignUp())
             {
@@ -282,5 +288,72 @@ public class Controller
 
     }
 
+    public boolean loginReg() {
+        try {
+            String username = frame.getUserLogin().getUsername().getText();
+            String password = frame.getUserLogin().getPassword().getText();
+
+            if (!username.equals("") && !password.equals(""))
+            {
+                User uo = new User();
+                uo.setUsername(username);
+                uo.setPassword(password);
+
+                String Json = new Gson().toJson(uo);
+                String dispatch = loginParser(sc.post(Json, "login/", frame),uo);
+
+                if (dispatch.equals("Login successful")){
+                    currentUser = uo;
+
+                    sc.parser(sco.get("users/" + currentUser.getId() + "/"), currentUser);
+
+                    //frame.getUserLogin().ClearLogin();
+
+                    return true;
+                }
+                else if(dispatch.equals("Wrong username or password")){
+                    JOptionPane.showMessageDialog(frame, "Wrong username or password",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if (dispatch.equals("Error in JSON")){
+                    JOptionPane.showMessageDialog(frame, "Backend issue",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(frame, "Username or password is incorrect try again",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+        return false;
+
+
+            }
+
+        public String loginParser(String string, User user)
+        {
+            JSONParser parser = new JSONParser();
+            String dispatcho = new String();
+            int id =0;
+
+            try
+            {
+                Object dispo = parser.parse(string);
+                JSONObject jsonMsgo = (JSONObject) dispo;
+
+                dispatcho = ((String)jsonMsgo.get("message"));
+
+                System.out.println(dispatcho);
+                user.setId ((long) jsonMsgo.get("userid"));
+
+                return dispatcho;
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
 }

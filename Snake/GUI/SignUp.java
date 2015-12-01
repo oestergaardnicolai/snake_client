@@ -59,16 +59,24 @@ public class SignUp extends JPanel {
         username.setBounds(449, 265, 200, 33);
         add(username);
 
+        jlMail = new JLabel("E-mail");
+        jlMail.setBounds(449, 310, 200, 33);
+        add(jlMail);
+
+        mail = new JTextField();
+        mail.setBounds(449, 335, 200, 33);
+        add(mail);
+
         jlPassword = new JLabel("Password 6 or more signs");
-        jlPassword.setBounds(449, 310, 200, 33);
+        jlPassword.setBounds(449, 380, 200, 33);
         add(jlPassword);
 
         password = new JTextField();
-        password.setBounds(449, 335, 200, 33);
+        password.setBounds(449, 405, 200, 33);
         add(password);
 
         btnSignUp = new JButton("Sign up now ->");
-        btnSignUp.setBounds(449, 380, 200, 33);
+        btnSignUp.setBounds(449, 450, 200, 33);
         add(btnSignUp);
 
         btnBack = new JButton("<- Back to Userlogin");
