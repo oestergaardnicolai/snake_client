@@ -1,6 +1,7 @@
 package snake_client.Snake.LOGIC;
 
 //GUI imports
+import com.sun.corba.se.spi.activation.Server;
 import snake_client.Snake.GUI.Frame;
 
 //SDK imports
@@ -30,7 +31,8 @@ public class Controller
 
     private static Socket socket;
     private static PrintWriter printWriter;
-    private static Scanner sc;
+    private static Scanner scanner;
+    private ServerConnection sc;
 
     private Frame frame;
     //ServerConnection sco = new ServerConnection();
@@ -40,6 +42,8 @@ public class Controller
 
 
     public Controller(){
+
+        sc = new ServerConnection();
 
         frame = new Frame();
         frame.setVisible(true);
@@ -66,7 +70,7 @@ public class Controller
     }
 
 
-    public void socketMethod(){
+    /*public void socketMethod(){
 
         try {
 
@@ -76,7 +80,7 @@ public class Controller
             printWriter = new PrintWriter(socket.getOutputStream(),true);
             printWriter.println("Woop WOop");
 
-            sc = new Scanner(System.in);
+            scanner = new Scanner(System.in);
             printWriter.println("Input: ");
             String string = sc.next();
 
@@ -85,7 +89,7 @@ public class Controller
         } catch(Exception e) {
             System.out.println(e);
         }
-    }
+    }*/
 
     private class UserLoginActionListener implements ActionListener{
 
@@ -94,6 +98,9 @@ public class Controller
 
 
             if (event.getSource() == frame.getUserLogin().getBtnSignIn()){
+
+
+                getApi();
 
                 frame.show(Frame.MENU);
             }
@@ -264,6 +271,15 @@ public class Controller
                 frame.show(Frame.JOINGAME);
             }
         }
+    }
+
+    public void getApi(){
+
+        sc.get("");
+
+
+
+
     }
 
 

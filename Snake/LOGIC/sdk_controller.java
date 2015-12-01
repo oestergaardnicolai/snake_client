@@ -1,4 +1,4 @@
-/*
+
 package snake_client.Snake.LOGIC;
 //Imports from GUI
 import snake_client.Snake.GUI.Frame;
@@ -12,7 +12,7 @@ import snake_client.Snake.SDKCon.ServerConnection;
 
 /**
  * Created by nicolaiostergaard on 27/11/15.
-
+*/
 
 public class sdk_controller {
 
@@ -54,8 +54,11 @@ public class sdk_controller {
     return false;
 
 }
-        }
-    }
-
 }
-*/
+        }
+        }
+
+
+
+
+
