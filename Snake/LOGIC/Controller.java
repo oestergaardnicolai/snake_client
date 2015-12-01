@@ -61,6 +61,7 @@ public class Controller
         frame.getInstructions().addActionListener(new InstructionsActionListener());
         frame.getHowToPlay().addActionListener(new HowToPlayActionListener());
         frame.getSignUp().addActionListener(new SignUpActionListener());
+        frame.getCreateGame().addActionListener(new CreateGameActionListener());
         frame.show(Frame.LOGIN);
     }
 
@@ -184,7 +185,7 @@ public class Controller
             }
             else if(event.getSource() == frame.getPlay().getBtnCreateGame())
             {
-
+                frame.show(Frame.CREATEGAME);
             }
             else if (event.getSource() == frame.getPlay().getBtnJoinGame()){
                 frame.show(Frame.JOINGAME);
@@ -250,6 +251,17 @@ public class Controller
         public void actionPerformed(ActionEvent event) {
             if (event.getSource() == frame.getSignUp().getBtnBack()) {
                 frame.show(Frame.LOGIN);
+            }
+        }
+    }
+
+    private class CreateGameActionListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+            if(event.getSource() == frame.getCreateGame().getBtnBack())
+            {
+                frame.show(Frame.JOINGAME);
             }
         }
     }
