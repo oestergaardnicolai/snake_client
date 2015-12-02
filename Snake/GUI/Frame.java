@@ -15,7 +15,7 @@ public class Frame extends JFrame
     public static final String PLAYSNAKE = "Play_Snake";
     public static final String JOINGAME = "Join_Game";
     public static final String HIGHSCORE = "Highscore";
-    public static final String MENU = "Menu";
+    public static final String USERMENU = "User_Menu";
     public static final String LOGIN = "Login";
     public static final String RATEGAME = "Rate_Game";
     public static final String INSTRUCTIONS ="Instructions";
@@ -42,6 +42,7 @@ public class Frame extends JFrame
      */
     public Frame()
     {
+        c = new CardLayout();
 
         contentPane = new JPanel();
         Condition co = new Condition();
@@ -65,7 +66,7 @@ public class Frame extends JFrame
         contentPane.add(userlogin, LOGIN);
 
         usermenu = new UserMenu();
-        contentPane.add(usermenu, MENU);
+        contentPane.add(usermenu, USERMENU);
 
         highscore = new Highscore();
         contentPane.add(highscore, HIGHSCORE);
@@ -151,6 +152,7 @@ public class Frame extends JFrame
     {
         return creategame;
     }
+
 
     public void show(String card)
     {

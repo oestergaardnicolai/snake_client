@@ -1,5 +1,6 @@
 package snake_client.Snake.SDKCon;
 
+import org.codehaus.jettison.json.JSONException;
 import org.json.simple.parser.JSONParser;
 import snake_client.Snake.SDK.User;
 import com.google.gson.Gson;
@@ -51,10 +52,12 @@ public class ServerConnection {
 
     public String get( String path){
 
-        Client client = Client.create();
+        try {
 
-        WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
-        ClientResponse response = webResource.type("application/json").get(ClientResponse.class);
+            Client client = Client.create();
+
+            WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
+            ClientResponse response = webResource.type("application/json").get(ClientResponse.class);
 
        /* if (response.getStatus() != 200) {
             throw new RuntimeException("Failed: HTTP error code: "
@@ -62,11 +65,16 @@ public class ServerConnection {
         }*/
 
 
-        String output = response.getEntity(String.class);
-        System.out.println(output);
+            String output = response.getEntity(String.class);
+            System.out.println(output);
 
-        return output;
-
+            return output;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public String post(String json, String path, Frame frame){
@@ -82,7 +90,10 @@ public class ServerConnection {
 
             String output = response.getEntity(String.class);
             System.out.println(output);
-            return output;
+
+            if(response != null) {
+                return output;
+            }
         }
         catch (Exception e)
         {
@@ -115,5 +126,4 @@ public class ServerConnection {
         }
     }
 }
-
 

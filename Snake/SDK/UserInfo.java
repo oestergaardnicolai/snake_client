@@ -3,7 +3,7 @@ package snake_client.Snake.SDK;
 /**
  * Created by nicolaiostergaard on 30/11/15.
  */
-public class UserInfo {
+public class UserInfo extends User {
 
     private int highscore;
     private int total_highscore;

@@ -1,9 +1,10 @@
 package snake_client.Snake.LOGIC;
 
 //GUI imports
-import com.sun.corba.se.spi.activation.Server;
+//import com.sun.corba.se.spi.activation.Server;
 import org.json.simple.JSONObject;
 import snake_client.Snake.GUI.Frame;
+import snake_client.Snake.GUI.UserMenu;
 
 //SDK imports
 import snake_client.Snake.SDK.User;
@@ -20,10 +21,9 @@ import java.net.Socket;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
-import java.net.UnknownHostException;
-import java.io.IOException;
 import javax.swing.*;
 import org.json.simple.parser.JSONParser;
+import snake_client.Snake.LOGIC.sdk_controller;
 
 /**
  * Created by nicolaiostergaard on 13/11/15.
@@ -37,10 +37,12 @@ public class Controller
     private ServerConnection sc;
 
     private Frame frame;
+    private sdk_controller sdkc;
     ServerConnection sco = new ServerConnection();
     User currentUser = new User();
     User uo = new User();
-    UserInfo uio = new UserInfo();
+    UserInfo ui = new UserInfo();
+    sdk_controller sdko;
 
 
     public Controller(){
@@ -106,9 +108,9 @@ public class Controller
 
                 if (loginReg()) {
 
-                    frame.show(Frame.MENU);
+                    frame.show(Frame.USERMENU);
                 }
-                else System.out.println("Forkert");
+                else System.out.println("Wrong, login-failure");
             }
             else if (event.getSource() == frame.getUserLogin().getBtnSignUp())
             {
@@ -127,6 +129,7 @@ public class Controller
             }
             else if (event.getSource() == frame.getUserMenu().getBtnHighscores())
             {
+                sdko.highscore(frame);
 
                 frame.show(Frame.HIGHSCORE);
 
@@ -163,7 +166,7 @@ public class Controller
 
             if (event.getSource() == frame.getHighscore().getBtnBack())
             {
-                frame.show(Frame.MENU);
+                frame.show(Frame.USERMENU);
             }
 
         }
@@ -193,7 +196,7 @@ public class Controller
         public void actionPerformed(ActionEvent event){
 
             if(event.getSource() == frame.getPlay().getBtnBack()){
-                frame.show(Frame.MENU);
+                frame.show(Frame.USERMENU);
 
             }
             else if(event.getSource() == frame.getPlay().getBtnCreateGame())
@@ -212,11 +215,23 @@ public class Controller
 
             if(event.getSource() == frame.getDeleteGame().getBtnBack())
             {
-                frame.show(Frame.MENU);
+                frame.show(Frame.USERMENU);
             }
             else if(event.getSource() == frame.getDeleteGame().getBtnDelete())
             {
+                //getApi();
+                if(deleteGame(frame, uo))
+                {
 
+                    JOptionPane.showMessageDialog(frame, "The game is deleted",
+                            "Success", JOptionPane.ERROR_MESSAGE);
+
+                    frame.show(Frame.USERMENU);
+                }
+                else
+                {
+                    frame.show(Frame.DELETEGAME);
+                }
             }
 
         }
@@ -228,7 +243,7 @@ public class Controller
         {
             if(event.getSource() == frame.getRateGame().getBtnBack())
             {
-                frame.show(Frame.MENU);
+                frame.show(Frame.USERMENU);
             }
 
         }
@@ -240,7 +255,7 @@ public class Controller
         {
             if(event.getSource() == frame.getInstructions().getBtnBack())
             {
-                frame.show(Frame.MENU);
+                frame.show(Frame.USERMENU);
             }
             else if(event.getSource() == frame.getInstructions().getBtnHowToPlay())
             {
@@ -272,9 +287,19 @@ public class Controller
     {
         public void actionPerformed(ActionEvent event)
         {
-            if(event.getSource() == frame.getCreateGame().getBtnBack())
+
+            if (event.getSource() == frame.getCreateGame().getBtnCreate()) {
+
+                getApi();
+                if (createGame(frame, ui, uo))
+                {
+                    frame.show(Frame.USERMENU);
+                }
+
+            }
+            else if (event.getSource() == frame.getCreateGame().getBtnBack())
             {
-                frame.show(Frame.JOINGAME);
+                frame.show(Frame.PLAYSNAKE);
             }
         }
     }
@@ -282,10 +307,6 @@ public class Controller
     public void getApi(){
 
         sc.get("");
-
-
-
-
     }
 
     public boolean loginReg() {
@@ -300,7 +321,7 @@ public class Controller
                 uo.setPassword(password);
 
                 String Json = new Gson().toJson(uo);
-                String dispatch = loginParser(sc.post(Json, "login/", frame),uo);
+                String dispatch = loginParser(sc.post(Json, "login/", frame), uo);
 
                 if (dispatch.equals("Login successful")){
                     currentUser = uo;
@@ -340,12 +361,12 @@ public class Controller
             try
             {
                 Object dispo = parser.parse(string);
-                JSONObject jsonMsgo = (JSONObject) dispo;
+                JSONObject jsono = (JSONObject) dispo;
 
-                dispatcho = ((String)jsonMsgo.get("message"));
+                dispatcho = ((String)jsono.get("message"));
 
                 System.out.println(dispatcho);
-                user.setId ((long) jsonMsgo.get("userid"));
+                user.setId ((long) jsono.get("userid"));
 
                 return dispatcho;
             }
@@ -355,5 +376,134 @@ public class Controller
             }
             return null;
         }
+
+
+
+    //______________________________________________________________
+
+
+    // Create Game
+    public boolean createGame(Frame frame, UserInfo ui, User uo)
+    {
+        try {
+            String field_name = frame.getCreateGame().getField_name().getText();
+            int mapsize = frame.getCreateGame().getMapsize();
+            String controls = frame.getCreateGame().getControls().getText();
+
+            if (!field_name.equals("") && mapsize != 0 && !controls.equals("")) {
+                Game go = new Game();
+
+                ui.setId(uo.getId());
+                ui.setControls(controls);
+                go.setName(field_name);
+                go.setMap_size(mapsize);
+                go.setHost(ui);
+
+                String Json = new Gson().toJson(go);
+
+                String dispatch = createGameParser(sc.post(Json, "games/", frame));
+
+
+                if (dispatch.equals(go.getName())) {
+                    JOptionPane.showMessageDialog(frame, "Game created, time to challenge friends"
+                            + go.getName(), "Game created", JOptionPane.ERROR_MESSAGE);
+
+                    return true;
+                } else if (dispatch.equals("Errors in JSON") || dispatch.equals("Something went wrong")) {
+                    JOptionPane.showMessageDialog(frame, "Check input",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    System.out.println("Wrong");
+                }
+
+            }
+        }
+
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    //Create game parser
+    public String createGameParser(String string)
+    {
+        JSONParser jpo = new JSONParser();
+        String field_name = new String();
+
+        try
+        {
+            Object dispo = jpo.parse(string);
+            JSONObject jsono = (JSONObject) dispo;
+
+            field_name = ((String) jsono.get("name"));
+
+            Game go = new Game();
+            go.setName(field_name);
+
+            return field_name;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+    //Delete game
+    public boolean deleteGame(Frame frame, User uo)
+    {
+        try
+        {
+
+            int id = frame.getDeleteGame().getInsertgameid();
+
+            if(id != 0)
+            {
+                String disp = deleteGameParser(sc.get("games/" + id));
+
+                if(disp.equals("Game was deleted"))
+                {
+                    return true;
+                }
+                else if(disp.equals("Failed. Game was not deleted"))
+                {
+                    JOptionPane.showMessageDialog(frame, "Game id does not exist try another", "Error"
+                            , JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
+
+    //Delete game parser
+    public String deleteGameParser(String string)
+    {
+        JSONParser jpo = new JSONParser();
+        String disp = new String();
+
+        try
+        {
+            Object dispo = jpo.parse(string);
+            JSONObject jsono = (JSONObject) dispo;
+
+            disp = ((String) jsono.get("message"));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return disp;
+    }
+
 
 }

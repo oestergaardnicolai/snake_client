@@ -45,9 +45,9 @@ public class DeleteGame extends JPanel
 
     }
 
-    public JTextField getInsertgameid()
+    public int getInsertgameid()
     {
-        return Insertgameid;
+        return Integer.parseInt(Insertgameid.getText());
     }
 
     public JButton getBtnDelete()

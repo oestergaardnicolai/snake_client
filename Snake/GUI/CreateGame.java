@@ -23,6 +23,7 @@ public class CreateGame extends JPanel
     private JTextField mapsize;
 
     private JButton btnBack;
+    private JButton btnCreate;
 
     public CreateGame()
     {
@@ -59,6 +60,10 @@ public class CreateGame extends JPanel
         mapsize.setBounds(449, 265, 200, 33);
         add(mapsize);
         mapsize.setColumns(10);
+
+        btnCreate = new JButton("Create");
+        btnCreate.setBounds(449, 300, 200, 33);
+        add(btnCreate);
 
         btnBack = new JButton("<- Back to Play Game");
         btnBack.setBounds(83, 649, 171, 41);
@@ -97,9 +102,9 @@ public class CreateGame extends JPanel
         return jlMapsize;
     }
 
-    public JTextField getMapsize()
+    public int getMapsize()
     {
-        return mapsize;
+        return Integer.parseInt(mapsize.getText());
     }
 
     public JButton getBtnBack()
@@ -107,8 +112,14 @@ public class CreateGame extends JPanel
         return btnBack;
     }
 
+    public JButton getBtnCreate()
+    {
+        return btnCreate;
+    }
+
     public void addActionListener(ActionListener al)
     {
         btnBack.addActionListener(al);
+        btnCreate.addActionListener(al);
     }
 }
