@@ -24,7 +24,6 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 import javax.swing.*;
 import org.json.simple.parser.JSONParser;
-import snake_client.Snake.LOGIC.sdk_controller;
 
 /**
  * Created by nicolaiostergaard on 13/11/15.
@@ -189,11 +188,13 @@ public class Controller
                             JOptionPane.PLAIN_MESSAGE);
 
                     frame.show(Frame.PLAYSNAKE);
+                    frame.getJoinGame().setText();
                 } else {
                     JOptionPane.showMessageDialog(frame, "You lost!", "Failure",
                             JOptionPane.WARNING_MESSAGE);
 
                     frame.show(Frame.PLAYSNAKE);
+                    frame.getJoinGame().setText();
                 }
             }
             else if(event.getSource() == frame.getJoinGame().getBtnCancel())
@@ -202,7 +203,7 @@ public class Controller
             }
             else if(event.getSource() == frame.getJoinGame().getBox())
             {
-                go = showExistingGames(frame);
+              go = showExistingGamesInfo(frame);
             }
         }
     }
@@ -220,6 +221,7 @@ public class Controller
             }
             else if (event.getSource() == frame.getPlay().getBtnJoinGame()){
                 frame.show(Frame.JOINGAME);
+                showExistingGames(frame, go);
             }
 
         }
@@ -603,7 +605,7 @@ public class Controller
     {
         try
         {
-            Game[] go2 = showEsistingGamesParser(sc.get("games/open/"));
+            Game[] go2 = showExistingGamesParser(sc.get("games/open/"));
 
             for(Game go1 : go2)
             {
@@ -618,7 +620,7 @@ public class Controller
         }
     }
 
-    public Game[] showEsistingGamesParser(String string)
+    public Game[] showExistingGamesParser(String string)
     {
         try
         {
@@ -629,6 +631,22 @@ public class Controller
             return go;
         }
         catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Game showExistingGamesInfo(Frame frame) {
+        try {
+            String dispatch = frame.getJoinGame().getBox().getSelectedItem().toString();
+
+            Game go = getGame(sc.get("game/" + dispatch + "/"));
+
+            frame.getJoinGame().getJlShowGame().setText("Game name: " + go.getName());
+
+            return go;
+        } catch (Exception e)
         {
             e.printStackTrace();
         }

@@ -11,11 +11,14 @@ public class JoinGame extends JPanel
 {
     private JLabel jlJoinGame;
     private JLabel jlOnlineGames;
+    private JLabel jlControls;
+    private JLabel jlShowGame;
     private JComboBox box;
     private JButton btnEnterGame;
     private JButton btnCancel;
     private JButton btnBack;
     private JTextField controls;
+
 
     public JoinGame()
     {
@@ -30,8 +33,16 @@ public class JoinGame extends JPanel
         jlOnlineGames.setBounds(499, 252, 196, 33);
         add(jlOnlineGames);
 
+        jlShowGame = new JLabel("Games");
+        jlShowGame.setBounds(471, 600, 252, 33);
+        add(jlShowGame);
+
+        jlControls = new JLabel("Enter controls here");
+        jlControls.setBounds(471, 350, 252, 33);
+        add(jlControls);
+
         controls = new JTextField();
-        controls.setBounds(100, 100, 100, 100);
+        controls.setBounds(471, 400, 252, 33);
         add(controls);
 
         box = new JComboBox();
@@ -74,6 +85,16 @@ public class JoinGame extends JPanel
     public JTextField getControls()
     {
         return controls;
+    }
+
+    public JLabel getJlShowGame()
+    {
+        return jlShowGame;
+    }
+
+    public void setText()
+    {
+        controls.setText("");
     }
 
     public void addActionListener(ActionListener al)
