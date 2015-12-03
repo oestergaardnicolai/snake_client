@@ -36,16 +36,6 @@ public class sdk_controller {
 
 
 
-
-
-
-
-
-    //Return ServerConnection object
-            public ServerConnection getSco()
-            {
-                return sco;
-            }
     }
 
 

@@ -15,6 +15,7 @@ public class JoinGame extends JPanel
     private JButton btnEnterGame;
     private JButton btnCancel;
     private JButton btnBack;
+    private JTextField controls;
 
     public JoinGame()
     {
@@ -28,6 +29,10 @@ public class JoinGame extends JPanel
         jlOnlineGames = new JLabel("Games online at the moment");
         jlOnlineGames.setBounds(499, 252, 196, 33);
         add(jlOnlineGames);
+
+        controls = new JTextField();
+        controls.setBounds(100, 100, 100, 100);
+        add(controls);
 
         box = new JComboBox();
         box.setBounds(471, 313, 252, 39);
@@ -64,6 +69,11 @@ public class JoinGame extends JPanel
     public JButton getBtnCancel()
     {
         return btnCancel;
+    }
+
+    public JTextField getControls()
+    {
+        return controls;
     }
 
     public void addActionListener(ActionListener al)

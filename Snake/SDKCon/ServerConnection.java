@@ -24,9 +24,7 @@ import javax.swing.*;
 public class ServerConnection {
 
 
-
-
-    public ServerConnection(){
+    public ServerConnection() {
         this.hostAddress = "http://localhost";
         this.port = 22381;
     }
@@ -50,7 +48,7 @@ public class ServerConnection {
         return port;
     }
 
-    public String get( String path){
+    public String get(String path) {
 
         try {
 
@@ -69,15 +67,13 @@ public class ServerConnection {
             System.out.println(output);
 
             return output;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public String post(String json, String path, Frame frame){
+    public String post(String json, String path, Frame frame) {
 
         try {
 
@@ -91,12 +87,10 @@ public class ServerConnection {
             String output = response.getEntity(String.class);
             System.out.println(output);
 
-            if(response != null) {
+            if (response != null) {
                 return output;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(frame, "HTTP failed", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -105,12 +99,10 @@ public class ServerConnection {
     }
 
 
-    public void parser(String Json, User user)
-    {
+    public void parser(String Json, User user) {
         JSONParser jpo = new JSONParser();
 
-        try
-        {
+        try {
             Object o = jpo.parse(Json);
             JSONObject jsonObject = (JSONObject) o;
 
@@ -119,11 +111,30 @@ public class ServerConnection {
             user.setLast_name((String) jsonObject.get("LastName"));
             user.setStatus((String) jsonObject.get("Active"));
             //user.setCreated((Date) jsonObject.get("Created"));
-        }
-        catch(ParseException e)
-        {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public String put(String path, String json){
+        try {
+
+            Client client = Client.create();
+
+            WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
+            ClientResponse clientResponse = webResource.type("application/json").put(ClientResponse.class, json);
+
+            System.out.println("\nOutput from server ....\n");
+            String output = clientResponse.getEntity(String.class);
+            System.out.println(output);
+
+            return output;
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 

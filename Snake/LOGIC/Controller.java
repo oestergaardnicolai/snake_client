@@ -2,6 +2,7 @@ package snake_client.Snake.LOGIC;
 
 //GUI imports
 //import com.sun.corba.se.spi.activation.Server;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import snake_client.Snake.GUI.Frame;
 import snake_client.Snake.GUI.UserMenu;
@@ -43,6 +44,7 @@ public class Controller
     User uo = new User();
     UserInfo ui = new UserInfo();
     sdk_controller sdko;
+    private Game go;
 
 
     public Controller(){
@@ -181,13 +183,26 @@ public class Controller
             {
                 frame.show(Frame.PLAYSNAKE);
             }
-            else if(event.getSource() == frame.getJoinGame())
-            {
+            else if(event.getSource() == frame.getJoinGame().getBtnEnterGame()) {
+                if (joinExistingGame(frame, uo, ui, go)) {
+                    JOptionPane.showMessageDialog(frame, "Congrats, you won!", "Success!",
+                            JOptionPane.PLAIN_MESSAGE);
 
+                    frame.show(Frame.PLAYSNAKE);
+                } else {
+                    JOptionPane.showMessageDialog(frame, "You lost!", "Failure",
+                            JOptionPane.WARNING_MESSAGE);
+
+                    frame.show(Frame.PLAYSNAKE);
+                }
             }
             else if(event.getSource() == frame.getJoinGame().getBtnCancel())
             {
                 frame.show(Frame.PLAYSNAKE);
+            }
+            else if(event.getSource() == frame.getJoinGame().getBox())
+            {
+                go = showExistingGames(frame);
             }
         }
     }
@@ -219,7 +234,7 @@ public class Controller
             }
             else if(event.getSource() == frame.getDeleteGame().getBtnDelete())
             {
-                //getApi();
+                getApi();
                 if(deleteGame(frame, uo))
                 {
 
@@ -308,6 +323,8 @@ public class Controller
 
         sc.get("");
     }
+
+
 
     public boolean loginReg() {
         try {
@@ -460,6 +477,7 @@ public class Controller
         try
         {
 
+
             int id = frame.getDeleteGame().getInsertgameid();
 
             if(id != 0)
@@ -505,5 +523,116 @@ public class Controller
         return disp;
     }
 
+
+
+
+
+    public boolean joinExistingGame(Frame frame, User uo, UserInfo ui, Game go)
+    {
+        Gson gson;
+        try {
+
+            gson = new Gson();
+
+            String controls = frame.getJoinGame().getControls().getText();
+
+            if(!controls.equals(""))
+            {
+                System.out.println(go.getId());
+                ui.setId(uo.getId());
+                ui.setControls(controls);
+                go.setOpponent(ui);
+
+                String json = gson.toJson(go);
+
+                String dispatch = deleteGameParser(sc.put("games/join/", json));
+
+                if(dispatch.equals("Game was joined"))
+                {
+                    Game go1 = getGame(sc.put("games/start", json));
+
+                    System.out.println(go1.getWinner());
+
+                    if(go1.getWinner().getWin_lose())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else if(dispatch.equals("Game closed"))
+                {
+                    JOptionPane.showMessageDialog(frame, "Game closed",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if (dispatch.equals("Error in JSON"))
+                {
+                    JOptionPane.showMessageDialog(frame, "Error in JSON",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public Game getGame(String string)
+    {
+        try
+        {
+            Gson gson = new Gson();
+
+            Game go = gson.fromJson(string, Game.class);
+
+            return go;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public void showExistingGames(Frame frame, Game go)
+    {
+        try
+        {
+            Game[] go2 = showEsistingGamesParser(sc.get("games/open/"));
+
+            for(Game go1 : go2)
+            {
+                frame.getJoinGame().getBox().addItem(go1.getId());
+
+                System.out.println(go1.getId() + ":\t" + go1.getName());
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public Game[] showEsistingGamesParser(String string)
+    {
+        try
+        {
+            Gson gson = new Gson();
+
+            Game[] go = gson.fromJson(string, Game[].class);
+
+            return go;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }
