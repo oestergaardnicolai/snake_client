@@ -45,7 +45,6 @@ public class Controller
     sdk_controller sdko;
     private Game go;
 
-
     public Controller(){
 
         sc = new ServerConnection();
@@ -237,7 +236,7 @@ public class Controller
             else if(event.getSource() == frame.getDeleteGame().getBtnDelete())
             {
                 getApi();
-                if(deleteGame(frame, uo))
+                if(deleteGame(uo, frame))
                 {
 
                     JOptionPane.showMessageDialog(frame, "The game is deleted",
@@ -406,10 +405,10 @@ public class Controller
     {
         try {
             String field_name = frame.getCreateGame().getField_name().getText();
-            int mapsize = frame.getCreateGame().getMapsize();
+            String mapsize = frame.getCreateGame().getMapsize().getText();
             String controls = frame.getCreateGame().getControls().getText();
 
-            if (!field_name.equals("") && mapsize != 0 && !controls.equals("")) {
+            if (!field_name.equals("") && mapsize!= "0" && !controls.equals("")) {
                 Game go = new Game();
 
                 ui.setId(uo.getId());
@@ -474,27 +473,30 @@ public class Controller
 
 
     //Delete game
-    public boolean deleteGame(Frame frame, User uo)
+    public boolean deleteGame(User uo, Frame frame)
     {
+
         try
         {
 
+            String id = frame.getDeleteGame().getInsertgameid().getText();
+            System.out.println(id);
 
-            int id = frame.getDeleteGame().getInsertgameid();
 
-            if(id != 0)
+            if(!id.equals(""))
             {
-                String disp = deleteGameParser(sc.get("games/" + id));
+                String dispatch = deleteGameParser(sc.delete("games/" + id));
 
-                if(disp.equals("Game was deleted"))
+                if(dispatch.equals("Game was deleted"))
                 {
                     return true;
                 }
-                else if(disp.equals("Failed. Game was not deleted"))
+                else if(dispatch.equals("Failed. Game was not deleted"))
                 {
                     JOptionPane.showMessageDialog(frame, "Game id does not exist try another", "Error"
                             , JOptionPane.ERROR_MESSAGE);
                 }
+                System.out.println(dispatch);
             }
         }
         catch (Exception e)
@@ -509,20 +511,20 @@ public class Controller
     public String deleteGameParser(String string)
     {
         JSONParser jpo = new JSONParser();
-        String disp = new String();
+        String dispatch = new String();
 
         try
         {
-            Object dispo = jpo.parse(string);
-            JSONObject jsono = (JSONObject) dispo;
+            Object disp = jpo.parse(string);
+            JSONObject jsono = (JSONObject) disp;
 
-            disp = ((String) jsono.get("message"));
+            dispatch = ((String) jsono.get("message"));
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        return disp;
+        return dispatch;
     }
 
 

@@ -102,9 +102,9 @@ public class CreateGame extends JPanel
         return jlMapsize;
     }
 
-    public int getMapsize()
+    public JTextField getMapsize()
     {
-        return Integer.parseInt(mapsize.getText());
+        return mapsize;
     }
 
     public JButton getBtnBack()
