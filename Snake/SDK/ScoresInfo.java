@@ -7,59 +7,59 @@ public class ScoresInfo {
 
     //Class created for getting the information about the highscore locations
 
-    private int st;
-    private int nd;
-    private int rd;
-    private int th;
-    private int fifth;
+    private long st;
+    private long nd;
+    private long rd;
+    private long th;
+    private long fifth;
 
     public ScoresInfo() {
     }
 
-    public int getSt() {
+    public long getSt() {
         return st;
     }
 
-    public void setSt(int _st) {
+    public void setSt(long _st) {
         st = _st;
     }
 
-    public int getNd()
+    public long getNd()
     {
         return nd;
     }
 
-    public void setNd(int _nd)
+    public void setNd(long _nd)
     {
         nd = _nd;
     }
 
-    public int getRd()
+    public long getRd()
     {
         return rd;
     }
 
-    public void setRd(int _rd)
+    public void setRd(long _rd)
     {
         rd = _rd;
     }
 
-    public int getTh()
+    public long getTh()
     {
         return th;
     }
 
-    public void setTh(int _th)
+    public void setTh(long _th)
     {
         th = _th;
     }
 
-    public int getFifth()
+    public long getFifth()
     {
         return fifth;
     }
 
-    public void setFifth(int _fifth)
+    public void setFifth(long _fifth)
     {
         fifth = _fifth;
     }

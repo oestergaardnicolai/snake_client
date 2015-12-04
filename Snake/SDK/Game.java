@@ -16,7 +16,7 @@ public class Game {
     private UserInfo winner;
     private String host_controls;
     private String opponent_controls;
-    private String map_size;
+    private int mapSize;
 
     public Game()
     {}
@@ -111,14 +111,14 @@ public class Game {
         opponent_controls = _opponent_controls;
     }
 
-    public String getMap_size()
+    public int getMapSize()
     {
-        return map_size;
+        return mapSize;
     }
 
-    public void setMap_size(String _map_size)
+    public void setMapSize(int _mapSize)
     {
-        map_size = _map_size;
+        mapSize = _mapSize;
     }
 
 

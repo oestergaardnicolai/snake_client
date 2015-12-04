@@ -8,6 +8,7 @@ import snake_client.Snake.GUI.Frame;
 import snake_client.Snake.GUI.UserMenu;
 
 //SDK imports
+import snake_client.Snake.SDK.ScoresInfo;
 import snake_client.Snake.SDK.User;
 import snake_client.Snake.SDK.Game;
 import snake_client.Snake.SDK.UserInfo;
@@ -129,7 +130,7 @@ public class Controller
             }
             else if (event.getSource() == frame.getUserMenu().getBtnHighscores())
             {
-                sdko.highscore(frame);
+                highscore(frame);
 
                 frame.show(Frame.HIGHSCORE);
 
@@ -405,16 +406,16 @@ public class Controller
     {
         try {
             String field_name = frame.getCreateGame().getField_name().getText();
-            String mapsize = frame.getCreateGame().getMapsize().getText();
+            int mapsize = frame.getCreateGame().getMapsize();
             String controls = frame.getCreateGame().getControls().getText();
 
-            if (!field_name.equals("") && mapsize!= "0" && !controls.equals("")) {
+            if (!field_name.equals("") && mapsize!= 0 && !controls.equals("")) {
                 Game go = new Game();
 
                 ui.setId(uo.getId());
                 ui.setControls(controls);
                 go.setName(field_name);
-                go.setMap_size(mapsize);
+                go.setMapSize(mapsize);
                 go.setHost(ui);
 
                 String Json = new Gson().toJson(go);
@@ -649,6 +650,64 @@ public class Controller
 
             return go;
         } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void highscore(Frame frame)
+    {
+        try
+        {
+            ScoresInfo sio = highscoreParser(sc.get("scores/"));
+
+            frame.getHighscore().getJlFirstScore().setText(String.valueOf(sio.getSt()));
+            frame.getHighscore().getJlSecondScore().setText(String.valueOf(sio.getNd()));
+            frame.getHighscore().getJlThirdScore().setText(String.valueOf(sio.getRd()));
+            frame.getHighscore().getJlFourthScore().setText(String.valueOf(sio.getTh()));
+            frame.getHighscore().getJlFifthScore().setText(String.valueOf(sio.getFifth()));
+        }
+
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(frame, "Connection error", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }
+
+    public ScoresInfo highscoreParser(String string){
+
+        JSONParser jpo = new JSONParser();
+
+        long st;
+        long nd;
+        long rd;
+        long th;
+        long fifth;
+
+        try
+        {
+            Object dispo = jpo.parse(string);
+            JSONObject joo = (JSONObject) dispo;
+
+            st = ((long) joo.get("no1"));
+            nd = ((long) joo.get("no2"));
+            rd = ((long) joo.get("no3"));
+            th = ((long) joo.get("no4"));
+            fifth = ((long) joo.get("no5"));
+
+            ScoresInfo sio = new ScoresInfo();
+
+            sio.setSt(st);
+            sio.setNd(nd);
+            sio.setRd(rd);
+            sio.setTh(th);
+            sio.setFifth(fifth);
+
+            return sio;
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }
