@@ -324,6 +324,9 @@ public class Controller
                     frame.getJoinGame().setText();
                 }
             }
+            /**
+             * 
+             */
             else if(event.getSource() == frame.getJoinGame().getBtnCancel())
             {
                 frame.show(Frame.PLAYSNAKE);
