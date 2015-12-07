@@ -5,43 +5,43 @@ package snake_client.Snake.SDK;
  */
 public class UserInfo extends User {
 
-    private int highscore;
-    private int total_highscore;
-    private boolean win_lose;
+    private int totalScore;
+    private int score;
+    private boolean winner;
     private int kills;
     private String controls;
 
     public UserInfo()
     {}
 
-    public int getHighscore()
+    public int getTotalScore()
     {
-        return highscore;
+        return totalScore;
     }
 
-    public void setHighscore(int _highscore)
+    public void setTotalScore(int _totalScore)
     {
-        highscore = _highscore;
+        totalScore = _totalScore;
     }
 
-    public int getTotal_highscore()
+    public int getScore()
     {
-        return total_highscore;
+        return score;
     }
 
-    public void setTotal_highscore(int _total_highscore)
+    public void setScore(int _score)
     {
-        total_highscore = _total_highscore;
+        score = _score;
     }
 
-    public boolean getWin_lose()
+    public boolean getWinner()
     {
-        return win_lose;
+        return winner;
     }
 
-    public void setWin_lose(boolean _win_lose)
+    public void setWinner(boolean _winner)
     {
-        win_lose = _win_lose;
+        winner = _winner;
     }
 
     public int getKills()

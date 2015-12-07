@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.*;
 
+
 /**
  * Created by nicolaiostergaard on 13/11/15.
  */
@@ -34,7 +35,7 @@ public class JoinGame extends JPanel
         add(jlOnlineGames);
 
         jlShowGame = new JLabel("Games");
-        jlShowGame.setBounds(471, 600, 252, 33);
+        jlShowGame.setBounds(471, 100, 252, 33);
         add(jlShowGame);
 
         jlControls = new JLabel("Enter controls here");
@@ -82,9 +83,9 @@ public class JoinGame extends JPanel
         return btnCancel;
     }
 
-    public JTextField getControls()
+    public String getControls()
     {
-        return controls;
+        return controls.getText();
     }
 
     public JLabel getJlShowGame()
@@ -97,15 +98,12 @@ public class JoinGame extends JPanel
         controls.setText("");
     }
 
+
     public void addActionListener(ActionListener al)
     {
         btnEnterGame.addActionListener(al);
         btnBack.addActionListener(al);
         btnCancel.addActionListener(al);
-    }
-
-    public void removeGames()
-    {
-        box.removeAllItems();
+        box.addActionListener(al);
     }
 }

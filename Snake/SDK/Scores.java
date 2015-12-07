@@ -6,10 +6,10 @@ package snake_client.Snake.SDK;
 public class Scores {
 
     private int id;
-    private int user_id;
-    private int game_id;
+    private UserInfo user;
+    private Game game;
     private int score;
-    private int opponent_id;
+    private UserInfo opponent;
 
     public Scores()
     {}
@@ -24,24 +24,24 @@ public class Scores {
         id = _id;
     }
 
-    public int getUser_id()
+    public UserInfo getUser()
     {
-        return user_id;
+        return user;
     }
 
-    public void setUser_id(int _user_id)
+    public void setUser(UserInfo _user)
     {
-        user_id = _user_id;
+        user = _user;
     }
 
-    public int getGame_id()
+    public Game getGame()
     {
-        return game_id;
+        return game;
     }
 
-    public void setGame_id(int _game_id)
+    public void setGame(Game _game)
     {
-        game_id = _game_id;
+        game = _game;
     }
 
     public int getScore()
@@ -54,13 +54,13 @@ public class Scores {
         score = _score;
     }
 
-    public int getOpponent_id()
+    public UserInfo getOpponent()
     {
-        return opponent_id;
+        return opponent;
     }
 
-    public void setOpponent_id(int _opponent_id)
+    public void setOpponent(UserInfo _opponent)
     {
-        opponent_id = _opponent_id;
+        opponent = _opponent;
     }
 }

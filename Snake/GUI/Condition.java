@@ -9,9 +9,14 @@ import javax.swing.*;
 public class Condition extends JPanel
 {
 
+    /**
+     * Gets the screensize of the computer
+    */
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
+    //Gets screenwidth
     private int screenWidth = (int) screenSize.getWidth();
+
     private int screenHeight = (int) screenSize.getHeight();
 
     private int frameWidth = screenWidth;
@@ -36,4 +41,5 @@ public class Condition extends JPanel
     {
         return frameWidth;
     }
+
 }

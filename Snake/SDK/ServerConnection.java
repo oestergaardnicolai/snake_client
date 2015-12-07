@@ -1,13 +1,9 @@
-package snake_client.Snake.SDKCon;
+package snake_client.Snake.SDK;
 
-import org.codehaus.jettison.json.JSONException;
 import org.json.simple.parser.JSONParser;
-import snake_client.Snake.SDK.User;
-import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import snake_client.Snake.SDK.Scores;
 import snake_client.Snake.GUI.Frame;
 
 import java.sql.Date;
@@ -32,14 +28,6 @@ public class ServerConnection {
     private String hostAddress;
     private int port;
 
-/*    public void setHostAddress(String hostAddress) {
-        this.hostAddress = hostAddress;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }*/
-
     public String getHostAddress() {
         return hostAddress;
     }
@@ -47,6 +35,9 @@ public class ServerConnection {
     public int getPort() {
         return port;
     }
+
+
+
 
     public String get(String path) {
 
@@ -67,9 +58,9 @@ public class ServerConnection {
             System.out.println(output);
 
             return output;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        } catch (Exception event) {
+            event.printStackTrace();
+            return "";
         }
     }
 
@@ -90,8 +81,8 @@ public class ServerConnection {
             if (response != null) {
                 return output;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception event) {
+            event.printStackTrace();
             JOptionPane.showMessageDialog(frame, "HTTP failed", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -99,20 +90,20 @@ public class ServerConnection {
     }
 
 
-    public void parser(String Json, User user) {
+    public void parser(String Json, User uo) {
         JSONParser jpo = new JSONParser();
 
         try {
             Object o = jpo.parse(Json);
             JSONObject jsonObject = (JSONObject) o;
 
-            user.setEmail((String) jsonObject.get("Email"));
-            user.setFirst_name((String) jsonObject.get("FirstName"));
-            user.setLast_name((String) jsonObject.get("LastName"));
-            user.setStatus((String) jsonObject.get("Active"));
+            uo.setEmail((String) jsonObject.get("Email"));
+            uo.setFirst_name((String) jsonObject.get("FirstName"));
+            uo.setLast_name((String) jsonObject.get("LastName"));
+            uo.setStatus((String) jsonObject.get("Active"));
             //user.setCreated((Date) jsonObject.get("Created"));
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (ParseException event) {
+            event.printStackTrace();
         }
     }
 
@@ -131,8 +122,8 @@ public class ServerConnection {
             return output;
 
         }
-        catch (Exception e){
-            e.printStackTrace();
+        catch (Exception event){
+            event.printStackTrace();
         }
         return null;
     }
@@ -156,8 +147,8 @@ public class ServerConnection {
             System.out.println(output);
 
             return output;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception event) {
+            event.printStackTrace();
             return null;
         }
     }

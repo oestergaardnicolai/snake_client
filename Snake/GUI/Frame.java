@@ -8,9 +8,22 @@ import javax.swing.border.*;
 /**
  * Created by nicolaiostergaard on 13/11/15.
  */
+
+/**
+ * This class contains the Frame (The window)
+ * Extended JFrame which allow us to make windows and gives us the
+ * basic windows features, the x, minimize, maximize
+ .*/
 public class Frame extends JFrame
 {
 
+
+    /**
+     * Sets id to the different panels
+     * Sets them to final to ensure that the variables value cant
+     * be modified after they have been declared
+     * Sets them static since so they dont need a instance.
+     */
     public static final String DELETEGAME = "Delete_Game";
     public static final String PLAYSNAKE = "Play_Snake";
     public static final String JOINGAME = "Join_Game";
@@ -22,6 +35,10 @@ public class Frame extends JFrame
     public static final String HOWTOPLAY ="How_To_Play";
     public static final String SIGNUP ="Sign_Up";
     public static final String CREATEGAME = "Create_Game";
+
+    /*
+        declare variables
+     */
     private JPanel contentPane;
     private UserLogin userlogin;
     private CardLayout c;
@@ -38,11 +55,13 @@ public class Frame extends JFrame
     private CreateGame creategame;
 
     /**
-     * Create the frame.
+     * Creates constructor of the class Frame to construct our objects
      */
     public Frame()
     {
-        c = new CardLayout();
+
+        //c = new CardLayout();
+
 
         contentPane = new JPanel();
         Condition co = new Condition();

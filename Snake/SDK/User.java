@@ -8,8 +8,8 @@ import java.sql.Date;
 public class User {
 
     private long id;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
     private String username;
     private String password;
@@ -31,22 +31,22 @@ public class User {
 
     public String getFirst_name()
     {
-        return first_name;
+        return firstName;
     }
 
     public void setFirst_name(String _first_name)
     {
-        first_name = _first_name;
+        firstName = _first_name;
     }
 
     public String getLast_name()
     {
-        return last_name;
+        return lastName;
     }
 
     public void setLast_name(String _last_name)
     {
-        last_name = _last_name;
+        lastName = _last_name;
     }
 
     public String getEmail()

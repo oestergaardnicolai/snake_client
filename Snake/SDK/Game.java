@@ -5,30 +5,56 @@ import java.util.Date;
 /**
  * Created by nicolaiostergaard on 27/11/15.
  */
+
+
 public class Game {
 
-    private long id;
+    /**
+     * Declaring variables to the right data types that fits the variables
+     * in some cases to other classes
+     */
+
+    //Sets the GameID as a long since it is a whole number with a lot of bits.
+    private int gameId;
+    //Sets the host equal to the class UserInfo
     private UserInfo host;
+    //Sets the opponent equal to the class UserInfo
     private UserInfo opponent;
+    //Sets the name as a String
     private String name;
+    //Sets the status as a String
     private String status;
-    private Date created;
+    //Outcommented since it couldnt respond with the controller, but it sets the Date to created (timestamp)
+    //private Date created;
+    //Sets the winner equal to the class UserInfo
     private UserInfo winner;
-    private String host_controls;
-    private String opponent_controls;
+    //Sets the host_controls to a String
+    /*private String host_controls;
+    //Sets the opponent_controls to a String
+    private String opponent_controls;*/
+    //sets the mapsize to an int.
     private int mapSize;
 
+    //Constructor of this class (not used)
     public Game()
     {}
 
-    public long getId()
+
+    /**
+     * Creates get method for GameID:
+     * Defines object to a JButton and returns something of that object
+     * Returns the data to the method caller (in this case the btnBack
+     * which is the button added to the screen so the user can go back to the main menu).
+     * @return
+     */
+    public int getGameId()
     {
-        return id;
+        return gameId;
     }
 
-    public void setId(long _id)
+    public void setGameId(int _gameId)
     {
-        id = _id;
+        gameId = _gameId;
     }
 
     public UserInfo getHost()
@@ -71,7 +97,7 @@ public class Game {
         status = _status;
     }
 
-    public Date getCreated()
+    /*public Date getCreated()
     {
         return created;
     }
@@ -80,7 +106,7 @@ public class Game {
     {
         created = _created;
     }
-
+*/
     public UserInfo getWinner()
     {
         return winner;
@@ -91,7 +117,7 @@ public class Game {
         winner = _winner;
     }
 
-    public String getHost_controls()
+    /*public String getHost_controls()
     {
         return host_controls;
     }
@@ -110,7 +136,7 @@ public class Game {
     {
         opponent_controls = _opponent_controls;
     }
-
+*/
     public int getMapSize()
     {
         return mapSize;
