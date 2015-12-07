@@ -50,14 +50,6 @@ public class UserLogin extends JPanel
         setBackground(Color.GREEN);
 
         /**
-         * Take the declared object of jlUserLogin
-         * and creates a new instance and initializes it in our values
-         * Adds the object to the screen
-         */
-        jlUserLogin = new JLabel("LOGIN");
-        add(jlUserLogin);
-
-        /**
          * Take the declared object of jlUsername
          * and creates a new instance and initializes it in our values
          * Adds the object to the screen
@@ -73,7 +65,7 @@ public class UserLogin extends JPanel
          */
         Username = new JTextField("Enter username here");
         add(Username);
-        Username.setColumns(25);
+        Username.setColumns(16);
 
         /**
          * Take the declared object of jlPassword
@@ -108,14 +100,6 @@ public class UserLogin extends JPanel
          */
         btnSignUp = new JButton("Sign up ->");
         add(btnSignUp);
-
-        /**
-         * Take the declared object of jlSnake
-         * and creates a new instance and initializes it in our values
-         * Adds the object to the screen
-         */
-        jlSnake = new JLabel("SNAKE");
-        add(jlSnake);
 
         /**
          * Take the declared object of jlBg

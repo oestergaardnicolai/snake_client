@@ -62,7 +62,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         jlCreateGame = new JLabel("Create Game");
-        jlCreateGame.setBounds(449, 57, 161, 33);
+        jlCreateGame.setBounds(225, 20, 161, 33);
         add(jlCreateGame);
 
         /**
@@ -72,7 +72,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         jlField_name = new JLabel("Set field name: ");
-        jlField_name.setBounds(449, 100, 200, 33);
+        jlField_name.setBounds(225, 50, 200, 33);
         add(jlField_name);
 
         /**
@@ -82,7 +82,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         field_name = new JTextField();
-        field_name.setBounds(449, 125, 200, 33);
+        field_name.setBounds(225, 75, 200, 33);
         add(field_name);
         field_name.setColumns(10);
 
@@ -93,7 +93,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         jlControls = new JLabel("Set controls");
-        jlControls.setBounds(449, 170, 200, 33);
+        jlControls.setBounds(225, 120, 200, 33);
         add(jlControls);
 
         /**
@@ -103,7 +103,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         controls = new JTextField();
-        controls.setBounds(449, 195, 200, 33);
+        controls.setBounds(225, 145, 200, 33);
         add(controls);
         controls.setColumns(10);
 
@@ -114,7 +114,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         jlMapsize = new JLabel("Set the mapsize of the field");
-        jlMapsize.setBounds(449, 240, 200, 33);
+        jlMapsize.setBounds(225, 190, 200, 33);
         add(jlMapsize);
 
         /**
@@ -124,7 +124,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         mapsize = new JTextField();
-        mapsize.setBounds(449, 265, 200, 33);
+        mapsize.setBounds(225, 215, 200, 33);
         add(mapsize);
         mapsize.setColumns(10);
 
@@ -135,7 +135,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         btnCreate = new JButton("Create");
-        btnCreate.setBounds(449, 300, 200, 33);
+        btnCreate.setBounds(225, 250, 200, 33);
         add(btnCreate);
 
         /**
@@ -145,7 +145,7 @@ public class CreateGame extends JPanel
          * Adds the object to the screen
          */
         btnBack = new JButton("<- Back to Play Game");
-        btnBack.setBounds(83, 649, 171, 41);
+        btnBack.setBounds(10, 325, 171, 33);
         add(btnBack);
 
         //End of constructor

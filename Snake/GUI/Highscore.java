@@ -59,7 +59,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlHighscore = new JLabel("Highscore (Top 5)");
-        jlHighscore.setBounds(449, 57, 161, 33);
+        jlHighscore.setBounds(275, 20, 161, 33);
         add(jlHighscore);
 
         /**
@@ -69,7 +69,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlFirstPlace = new JLabel("1st place #SnakeGeneral");
-        jlFirstPlace.setBounds(449, 167, 200, 33);
+        jlFirstPlace.setBounds(225, 70, 200, 33);
         add(jlFirstPlace);
 
         /**
@@ -79,7 +79,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlFirstScore = new JLabel("");
-        jlFirstScore.setBounds(449, 192, 200, 33);
+        jlFirstScore.setBounds(225, 85, 200, 33);
         add(jlFirstScore);
 
         /**
@@ -89,7 +89,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlSecondPlace = new JLabel("2nd place #SnakeColonel");
-        jlSecondPlace.setBounds(449, 284, 200, 33);
+        jlSecondPlace.setBounds(225, 130, 200, 33);
         add(jlSecondPlace);
 
         /**
@@ -99,7 +99,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlSecondScore = new JLabel("");
-        jlSecondScore.setBounds(449, 309, 200, 33);
+        jlSecondScore.setBounds(225, 145, 200, 33);
         add(jlSecondScore);
 
         /**
@@ -109,7 +109,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlThirdPlace = new JLabel("3rd place #SnakeLieutenantColonel");
-        jlThirdPlace.setBounds(449, 407, 200, 33);
+        jlThirdPlace.setBounds(225, 190, 200, 33);
         add(jlThirdPlace);
 
         /**
@@ -119,7 +119,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlThirdScore = new JLabel("");
-        jlThirdScore.setBounds(449, 432, 200, 33);
+        jlThirdScore.setBounds(225, 205, 200, 33);
         add(jlThirdScore);
 
         /**
@@ -129,7 +129,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlFourthPlace = new JLabel("4th place #SnakeMajor");
-        jlFourthPlace.setBounds(449, 521, 200, 33);
+        jlFourthPlace.setBounds(225, 250, 200, 33);
         add(jlFourthPlace);
 
         /**
@@ -139,7 +139,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlFourthScore = new JLabel("");
-        jlFourthScore.setBounds(449, 546, 200, 33);
+        jlFourthScore.setBounds(225, 265, 200, 33);
         add(jlFourthScore);
 
         /**
@@ -149,7 +149,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlFifthPlace = new JLabel("5th place #SnakeCaptain");
-        jlFifthPlace.setBounds(449, 646, 200, 33);
+        jlFifthPlace.setBounds(225, 310, 200, 33);
         add(jlFifthPlace);
 
         /**
@@ -159,7 +159,7 @@ public class Highscore extends JPanel
          * Adds the object to the screen
          */
         jlFifthScore = new JLabel("");
-        jlFifthScore.setBounds(449, 681, 200, 33);
+        jlFifthScore.setBounds(225, 325, 200, 33);
         add(jlFifthScore);
 
         /**
@@ -171,7 +171,7 @@ public class Highscore extends JPanel
          */
         Icon back = new ImageIcon(getClass().getResource("back.png"));
         btnBack = new JButton(" BACK TO MENU", back);
-        btnBack.setBounds(83, 649, 171, 41);
+        btnBack.setBounds(10, 325, 171, 33);
         add(btnBack);
     //End of constructor
     }

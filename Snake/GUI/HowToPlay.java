@@ -44,7 +44,7 @@ public class HowToPlay extends JPanel
          * Adds the object to the screen
          */
         jlHowToPlay = new JLabel("HOW TO PLAY");
-        jlHowToPlay.setBounds(449, 200, 171, 33);
+        jlHowToPlay.setBounds(275, 20, 171, 33);
         add(jlHowToPlay);
 
         /**
@@ -57,7 +57,7 @@ public class HowToPlay extends JPanel
         jtA = new JTextArea("Press 'A' on your"
                 + " keyboard to make the"
                 + " snake move one step to the left", 6, 20);
-        jtA.setBounds(200, 400, 150, 80);
+        jtA.setBounds(100, 80, 150, 80);
         jtA.setFont(new Font("Serif", Font.PLAIN, 15));
         jtA.setLineWrap(true);
         jtA.setWrapStyleWord(true);
@@ -74,7 +74,7 @@ public class HowToPlay extends JPanel
         jtW = new JTextArea("Press 'W' on your"
                 + " keyboard to make the"
                 + " snake move one step up", 6, 20);
-        jtW.setBounds(200, 200, 150, 65);
+        jtW.setBounds(300, 80, 150, 65);
         jtW.setFont(new Font("Serif", Font.PLAIN, 15));
         jtW.setLineWrap(true);
         jtW.setWrapStyleWord(true);
@@ -91,7 +91,7 @@ public class HowToPlay extends JPanel
         jtS = new JTextArea("Press 'S' on your"
                 + " keyboard to make the"
                 + " snake move one step down", 6, 20);
-        jtS.setBounds(449, 400, 150, 65);
+        jtS.setBounds(100, 180, 150, 65);
         jtS.setFont(new Font("Serif", Font.PLAIN, 15));
         jtS.setLineWrap(true);
         jtS.setWrapStyleWord(true);
@@ -108,7 +108,7 @@ public class HowToPlay extends JPanel
         jtD = new JTextArea("Press 'D' on your"
                 + " keyboard to make the"
                 + " snake move one step to the right", 6, 20);
-        jtD.setBounds(449, 200, 150, 80);
+        jtD.setBounds(300, 180, 150, 80);
         jtD.setFont(new Font("Serif", Font.PLAIN, 15));
         jtD.setLineWrap(true);
         jtD.setWrapStyleWord(true);
@@ -123,7 +123,7 @@ public class HowToPlay extends JPanel
          * Adds the object to the screen
          */
         btnBack = new JButton("<- Back to Instructions");
-        btnBack.setBounds(83, 649, 171, 41);
+        btnBack.setBounds(10, 325, 171, 33);
         add(btnBack);
     }
 

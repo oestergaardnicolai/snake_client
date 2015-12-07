@@ -48,7 +48,7 @@ public class DeleteGame extends JPanel
          * Adds the object to the screen
          */
         jlDeleteGame = new JLabel("DELETE GAME");
-        jlDeleteGame.setBounds(406, 128, 170, 33);
+        jlDeleteGame.setBounds(275, 20, 170, 33);
         add(jlDeleteGame);
 
         /**
@@ -58,7 +58,7 @@ public class DeleteGame extends JPanel
          * Adds the object to the screen
          */
         jlInsertGameId = new JLabel("Insert Game ID ");
-        jlInsertGameId.setBounds(395, 282, 191, 33);
+        jlInsertGameId.setBounds(225, 80, 191, 33);
         add(jlInsertGameId);
 
         /**
@@ -68,7 +68,7 @@ public class DeleteGame extends JPanel
          * Adds the object to the screen
          */
         Insertgameid = new JTextField();
-        Insertgameid.setBounds(377, 367, 236, 39);
+        Insertgameid.setBounds(225, 130, 236, 39);
         add(Insertgameid);
         Insertgameid.setColumns(10);
 
@@ -79,7 +79,7 @@ public class DeleteGame extends JPanel
          * Adds the object to the screen
          */
         btnDelete = new JButton("Delete ->");
-        btnDelete.setBounds(405, 517, 171, 41);
+        btnDelete.setBounds(225, 180, 171, 33);
         add(btnDelete);
 
         /**
@@ -91,7 +91,7 @@ public class DeleteGame extends JPanel
          */
         Icon back = new ImageIcon(getClass().getResource("back.png"));
         btnBack = new JButton("<- Back", back);
-        btnBack.setBounds(83, 649, 171, 41);
+        btnBack.setBounds(10, 325, 171, 33);
         add(btnBack);
 
         //End of constructor

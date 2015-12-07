@@ -19,19 +19,19 @@ public class Instructions extends JPanel
         setLayout(null);
 
         jlInstructions = new JLabel("Instructions");
-        jlInstructions.setBounds(449, 100, 161, 33);
+        jlInstructions.setBounds(275, 20, 161, 33);
         add(jlInstructions);
 
         btnHowToPlay = new JButton("HOW TO PLAY");
-        btnHowToPlay.setBounds(449, 250, 161, 33);
+        btnHowToPlay.setBounds(225, 80, 161, 33);
         add(btnHowToPlay);
 
         btnSettings = new JButton("SETTINGS");
-        btnSettings.setBounds(449, 300, 161, 33);
+        btnSettings.setBounds(225, 130, 161, 33);
         add(btnSettings);
 
         btnBack = new JButton("<- Back to menu");
-        btnBack.setBounds(83, 649, 171, 41);
+        btnBack.setBounds(10, 325, 171, 33);
         add(btnBack);
 
     }

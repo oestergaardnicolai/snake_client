@@ -47,7 +47,7 @@ public class Play extends JPanel
          * Adds the object to the screen
          */
         jlPlayGame = new JLabel("PLAY GAME");
-        jlPlayGame.setBounds(441, 126, 148, 33);
+        jlPlayGame.setBounds(275, 20, 148, 33);
         add(jlPlayGame);
 
         /**
@@ -57,7 +57,7 @@ public class Play extends JPanel
          * Adds the object to the screen
          */
         btnCreateGame = new JButton("Create new game ->");
-        btnCreateGame.setBounds(422, 289, 187, 41);
+        btnCreateGame.setBounds(225, 80, 187, 41);
         add(btnCreateGame);
 
         /**
@@ -67,7 +67,7 @@ public class Play extends JPanel
          * Adds the object to the screen
          */
         btnJoinGame = new JButton("Join existing game ->");
-        btnJoinGame.setBounds(422, 418, 187, 41);
+        btnJoinGame.setBounds(225, 130, 187, 41);
         add(btnJoinGame);
 
         /**
@@ -77,7 +77,7 @@ public class Play extends JPanel
          * Adds the object to the screen
          */
         btnBack = new JButton("<- BACK TO MENU");
-        btnBack.setBounds(26, 649, 171, 41);
+        btnBack.setBounds(10, 325, 171, 33);
         add(btnBack);
     }
 

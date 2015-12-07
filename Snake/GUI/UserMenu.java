@@ -57,7 +57,7 @@ public class UserMenu extends JPanel
          * Adds the object to the screen
          */
         jlUserMenu = new JLabel("USERMENU");
-        jlUserMenu.setBounds(405, 152, 72, 33);
+        jlUserMenu.setBounds(275, 20, 161, 33);
         add(jlUserMenu);
 
         /**
@@ -74,7 +74,7 @@ public class UserMenu extends JPanel
         btnPlay.setBackground(Color.GREEN);
         btnPlay.setOpaque(true);
         btnPlay.setBorderPainted(false);
-        btnPlay.setBounds(355, 237, 171, 41);
+        btnPlay.setBounds(225, 80, 171, 41);
         add(btnPlay);
 
         /**
@@ -88,7 +88,7 @@ public class UserMenu extends JPanel
          */
         Icon highscore = new ImageIcon(getClass().getResource("highscore.png"));
         btnHighscores = new JButton("Highscores ->", highscore);
-        btnHighscores.setBounds(355, 346, 171, 41);
+        btnHighscores.setBounds(225, 130, 171, 41);
         btnHighscores.setBackground(Color.ORANGE);
         btnHighscores.setOpaque(true);
         btnHighscores.setBorderPainted(false);
@@ -108,7 +108,7 @@ public class UserMenu extends JPanel
         btnDeleteGame.setBackground(Color.RED);
         btnDeleteGame.setOpaque(true);
         btnDeleteGame.setBorderPainted(false);
-        btnDeleteGame.setBounds(355, 452, 171, 41);
+        btnDeleteGame.setBounds(225, 180, 171, 41);
         add(btnDeleteGame);
 
         /**
@@ -118,7 +118,7 @@ public class UserMenu extends JPanel
          * Adds the object to the screen
          */
         btnRateGame = new JButton("Rate Game ->");
-        btnRateGame.setBounds(355, 550, 171, 41);
+        btnRateGame.setBounds(225, 230, 171, 41);
         add(btnRateGame);
 
         /**
@@ -128,7 +128,7 @@ public class UserMenu extends JPanel
          * Adds the object to the screen
          */
         btnInstructions = new JButton("Instructions ->");
-        btnInstructions.setBounds(355, 600, 171, 41);
+        btnInstructions.setBounds(225, 280, 171, 41);
         add(btnInstructions);
 
         /**
@@ -138,7 +138,7 @@ public class UserMenu extends JPanel
          * Adds the object to the screen
          */
         btnLogout = new JButton("<- Logout");
-        btnLogout.setBounds(89, 649, 171, 41);
+        btnLogout.setBounds(10, 325, 171, 33);
         add(btnLogout);
 //End of constructor
     }

@@ -27,35 +27,35 @@ public class JoinGame extends JPanel
         setBackground(Color.GRAY);
 
         jlJoinGame = new JLabel("JOIN GAME");
-        jlJoinGame.setBounds(529, 79, 136, 33);
+        jlJoinGame.setBounds(275, 20, 136, 33);
         add(jlJoinGame);
 
         jlOnlineGames = new JLabel("Games online at the moment");
-        jlOnlineGames.setBounds(499, 252, 196, 33);
+        jlOnlineGames.setBounds(225, 80, 196, 33);
         add(jlOnlineGames);
 
         jlShowGame = new JLabel("Games");
-        jlShowGame.setBounds(471, 100, 252, 33);
+        jlShowGame.setBounds(225, 130, 252, 33);
         add(jlShowGame);
 
         jlControls = new JLabel("Enter controls here");
-        jlControls.setBounds(471, 350, 252, 33);
+        jlControls.setBounds(225, 180, 252, 33);
         add(jlControls);
 
         controls = new JTextField();
-        controls.setBounds(471, 400, 252, 33);
+        controls.setBounds(225, 230, 252, 33);
         add(controls);
 
         box = new JComboBox();
-        box.setBounds(471, 313, 252, 39);
+        box.setBounds(225, 280, 252, 39);
         add(box);
 
         btnEnterGame = new JButton("Enter game ->");
-        btnEnterGame.setBounds(511, 479, 171, 41);
+        btnEnterGame.setBounds(225, 320, 171, 41);
         add(btnEnterGame);
 
         btnBack = new JButton("<- Back to play");
-        btnBack.setBounds(26, 649, 171, 41);
+        btnBack.setBounds(10, 325, 171, 33);
         add(btnBack);
 
         btnCancel = new JButton("Cancel");
