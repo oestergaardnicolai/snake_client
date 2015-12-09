@@ -97,13 +97,14 @@ public class Controller
 
     /**
      * Declare the private inner event handler class and specifies that the class
-     * should implement the action listener interface.
+     * should implement the action listener.
      * This private inner class handles the event from when the user or Admin
      * is on the login screen.
      */
     private class UserLoginActionListener implements ActionListener{
 
         /**
+         * Handles button event for this inner class
          * This method is the action listeners interface
          * it invokes when an action occurs because it is called
          * right after the user performs an action
@@ -159,14 +160,14 @@ public class Controller
 
     /**
      * Declare the private inner event handler class and specifies that the class
-     * should implement the action listener interface.
+     * should implement the action listener.
      * This private inner class handles the event from what should be done when
      * the user or Admin presses something in the main menu
      * The user are here when he is logged correctly in.
      */
     private class UserMenuActionListener implements ActionListener{
         /**
-         *Another actionPerformed method
+         *Another actionPerformed method for button event handling
          * @param event
          */
         public void actionPerformed(ActionEvent event){
@@ -250,14 +251,14 @@ public class Controller
 
     /**
      * * Declare the private inner event handler class and specifies that the class
-     * should implement the action listener interface.
+     * should implement the action listener.
      * This private inner class handles the event from what should be done when
      * the user or Admin presses a button in the highscore panel.
      */
     private class HighscoreActionListener implements ActionListener
     {
         /**
-         * Another actionPerformed
+         * Another actionPerformed for handling button events
          * @param event
          */
         public void actionPerformed(ActionEvent event)
@@ -280,14 +281,14 @@ public class Controller
 
     /**
      * Declare the private inner event handler class and specifies that the class
-     * should implement the action listener interface.
+     * should implement the action listener.
      * This private inner class handles the event from what should be done when
      * the user or Admin presses something in the join game panel
      */
     private class  JoinGameActionListener implements ActionListener
     {
         /**
-         * Another actionPerformed method
+         * Another actionPerformed method for handling button events
          * @param event
          */
         public void actionPerformed(ActionEvent event)
@@ -308,33 +309,61 @@ public class Controller
              */
             else if(event.getSource() == frame.getJoinGame().getBtnEnterGame()) {
                 /**
-                 *
+                 * Prints out a winner message if joinexistinggames are met
                  */
                 if (joinExistingGame(frame, uo, ui, go)) {
                     JOptionPane.showMessageDialog(frame, "Congrats, you won!", "Success!",
                             JOptionPane.PLAIN_MESSAGE);
 
+                    /**
+                     * Takes the user back to play menu after task has
+                     * been performed
+                     */
                     frame.show(Frame.PLAYSNAKE);
                     frame.getJoinGame().setText();
+                    /**
+                     * If JoinExistingGames arent met print out a
+                     * lost message
+                     */
                 } else {
                     JOptionPane.showMessageDialog(frame, "You lost!", "Failure",
                             JOptionPane.WARNING_MESSAGE);
-
+                    /**
+                     * Takes the user back to the play menu after task
+                     * has been performed
+                     */
                     frame.show(Frame.PLAYSNAKE);
                     frame.getJoinGame().setText();
                 }
             }
+            /**
+             * An else-if statement that states what should be done if
+             * btncancel is pressed
+             */
             else if(event.getSource() == frame.getJoinGame().getBtnCancel())
             {
+                /**
+                 * Takes the user back to the play menu
+                 */
                 frame.show(Frame.PLAYSNAKE);
             }
+            /**
+             * An else-if statement that states what should be done
+             * if the user clicks on the combobox
+             */
             else if(event.getSource() == frame.getJoinGame().getBox())
             {
+                /**
+                 * object of game seted equal to showExistingGameInfo
+                 */
               go = showExistingGamesInfo(frame);
-            }
-        }
-    }
+            }//End of if statement
+        }//End of action performed
+    }//End of inner class
 
+    /**
+     *
+     */
     private class PlayActionListener implements ActionListener{
         public void actionPerformed(ActionEvent event){
 
@@ -431,6 +460,10 @@ public class Controller
 
     private class CreateGameActionListener implements ActionListener
     {
+        /**
+         * Handle button events
+         * @param event
+         */
         public void actionPerformed(ActionEvent event)
         {
 
@@ -470,8 +503,8 @@ public class Controller
                 uo.setPassword(login_password);
                 uo.setUsername(login_username);
 
-                String Json = new Gson().toJson(uo);
-                String dispatch = login_parser(sc.post(Json, "login/", frame), uo);
+                String jo = new Gson().toJson(uo);
+                String dispatch = login_parser(sc.post(jo, "login/", frame), uo);
 
                 if (dispatch.equals("Login successful")){
                     uo1 = uo;
@@ -520,9 +553,9 @@ public class Controller
 
                 return dispatcho;
             }
-            catch (Exception event)
+            catch (Exception exception)
             {
-                event.printStackTrace();
+                exception.printStackTrace();
             }
             return null;
         }
@@ -573,9 +606,9 @@ public class Controller
             }
         }
 
-        catch(Exception event)
+        catch(Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
 
         return false;
@@ -599,9 +632,9 @@ public class Controller
 
             return field_name;
         }
-        catch (Exception event)
+        catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
         return null;
     }
@@ -635,9 +668,9 @@ public class Controller
                 System.out.println(dispatch);
             }
         }
-        catch (Exception event)
+        catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
             JOptionPane.showMessageDialog(frame, "Error", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return false;
@@ -656,9 +689,9 @@ public class Controller
 
             dispatch = ((String) jsono.get("message"));
         }
-        catch (Exception event)
+        catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
         return dispatch;
     }
@@ -715,9 +748,9 @@ public class Controller
                 }
             }
         }
-        catch (Exception event)
+        catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
         return false;
     }
@@ -730,13 +763,19 @@ public class Controller
         {
             Gson gson = new Gson();
 
+            /**
+             * parses the JSON back into a Game
+             */
             Game go = gson.fromJson(string, Game.class);
 
             return go;
         }
-        catch (Exception e)
+        catch (Exception exception)
         {
-            e.printStackTrace();
+            /**
+             * Show Exception details
+             */
+            exception.printStackTrace();
         }
         return null;
     }
@@ -763,9 +802,9 @@ public class Controller
                 System.out.println(go1.getGameId() + ":\t" + go1.getName());
             }
         }
-        catch (Exception event)
+        catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
     }
 
@@ -779,9 +818,9 @@ public class Controller
 
             return go;
         }
-        catch (Exception event)
+        catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
         return null;
     }
@@ -795,9 +834,9 @@ public class Controller
             frame.getJoinGame().getJlShowGame().setText("Game name: " + go.getName());
 
             return go;
-        } catch (Exception event)
+        } catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
         return null;
     }
@@ -815,10 +854,10 @@ public class Controller
             frame.getHighscore().getJlFifthScore().setText(String.valueOf(sio.getFifth()));
         }
 
-        catch (Exception event)
+        catch (Exception exception)
         {
             JOptionPane.showMessageDialog(frame, "Connection error", "Connection error", JOptionPane.ERROR_MESSAGE);
-            event.printStackTrace();
+            exception.printStackTrace();
         }
     }
 
@@ -853,9 +892,9 @@ public class Controller
 
             return sio;
         }
-        catch (Exception event)
+        catch (Exception exception)
         {
-            event.printStackTrace();
+            exception.printStackTrace();
         }
         return null;
     }

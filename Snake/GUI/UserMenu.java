@@ -3,7 +3,6 @@ package snake_client.Snake.GUI;
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.event.*;
 
 /**
  * Created by nicolaiostergaard on 13/11/15.
