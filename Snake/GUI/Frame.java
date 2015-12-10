@@ -1,7 +1,6 @@
 package snake_client.Snake.GUI;
 
 import java.awt.*;
-import com.apple.eawt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -22,7 +21,7 @@ public class Frame extends JFrame
      * Sets id to the different panels
      * Sets them to final to ensure that the variables value cant
      * be modified after they have been declared
-     * Sets them static since so they dont need a instance.
+     * Sets them static so they dont need a instance.
      */
     public static final String DELETEGAME = "Delete_Game";
     public static final String PLAYSNAKE = "Play_Snake";
@@ -59,18 +58,35 @@ public class Frame extends JFrame
      */
     public Frame()
     {
-
-        //c = new CardLayout();
-
-
+        /**
+         * Creating JPanel
+         */
         contentPane = new JPanel();
+
+        //Creating object of the condition class
         Condition co = new Condition();
 
+        /**
+         * adds the exit function.
+         */
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        /**
+         * Sets the size, and used with setLocationRelativeTo(null)
+         */
         setSize(co.getFrameWidth(), co.getFrameHeight());
+        /**
+         * Replaces the contentPane
+         */
         setContentPane(contentPane);
+        /**
+         * Sets the title of the application
+         */
         setTitle("Snake");
+        /**
+         * Sets the application in the middle of the screen
+         */
         setLocationRelativeTo(null);
+
 
         //Builds path to snake.png in GUI package
         imageIcon = new ImageIcon(this.getClass().getResource("snake.png"));
@@ -78,9 +94,17 @@ public class Frame extends JFrame
         //Uses setIconImage method to set the icon image to snake.png
         setIconImage(imageIcon.getImage());
 
+        /**
+         * Sets the border and layout of the panel
+         */
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new CardLayout(0, 0));
 
+
+        /**
+         * Creating panels and adds them to
+         * the contentPane panel
+         */
         userlogin = new UserLogin();
         contentPane.add(userlogin, LOGIN);
 
@@ -117,62 +141,110 @@ public class Frame extends JFrame
         c = (CardLayout) getContentPane().getLayout();
     }
 
+    /**
+     * Creates getter method for UserLogin
+     * @return
+     */
     public UserLogin getUserLogin()
     {
         return userlogin;
     }
 
+    /**
+     * Creates getter method for usermenu
+     * @return
+     */
     public UserMenu getUserMenu()
     {
         return usermenu;
     }
 
+    /**
+     * Creates getter method for highscore
+     * @return
+     */
     public Highscore getHighscore()
     {
         return highscore;
     }
 
+    /**
+     * Creates getter method for joinGame
+     * @return
+     */
     public JoinGame getJoinGame()
     {
         return joinGame;
     }
 
+    /**
+     * Creates getter method for play
+     * @return
+     */
     public Play getPlay()
     {
         return play;
     }
 
+    /**
+     * Creates getter method for deleteGame
+     * @return
+     */
     public DeleteGame getDeleteGame()
     {
         return deleteGame;
     }
 
+    /**
+     * Creates getter method for rateGame
+     * @return
+     */
     public RateGame getRateGame()
     {
         return rateGame;
     }
 
+    /**
+     * Creates getter method for instructions
+     * @return
+     */
     public Instructions getInstructions()
     {
         return instructions;
     }
 
+    /**
+     * Creates getter method for howtoplay
+     * @return
+     */
     public HowToPlay getHowToPlay()
     {
         return howtoplay;
     }
 
+    /**
+     * Creates getter method for signup
+     * @return
+     */
     public SignUp getSignUp()
     {
         return signup;
     }
 
+    /**
+     * Creates getter method for creategame
+     * @return
+     */
     public CreateGame getCreateGame()
     {
         return creategame;
     }
 
 
+    /**
+     * Sends card to the frame
+     * @param card
+     */
     public void show(String card)
     {
         c.show(this.getContentPane(), card);

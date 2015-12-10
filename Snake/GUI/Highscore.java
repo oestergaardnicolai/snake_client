@@ -9,165 +9,123 @@ import java.awt.*;
  */
 
 /**
- * This class contains the Highscore
- * Extended JPanel which allow us to make windows extends Component, Container and JComponent
- * Used to group other components together.*/
+ * This class contains the GUI part of the Highscore.
+ * frame, all the event handling happens in the controller.
+ * Extends JPanel
+ * .*/
 public class Highscore extends JPanel
 {
     //Use of JLabel to put text on the screen in this case "Highscore (Top 5)"
     private JLabel jlHighscore;
     //Use of JLabel to put text on the screen in this case "1st place"
     private JLabel jlFirstPlace;
-    //Use of JLabel to put text on the screen in this case the highscore value of the 1st place
+    /**
+     * Declare rest of the variables for same
+     * purpose
+     */
     private JLabel jlFirstScore;
-    //Use of JLabel to put text on the screen in this case "2nd place"
     private JLabel jlSecondPlace;
-    //Use of JLabel to put text on the screen in this case the highscore value of the 2nd place
     private JLabel jlSecondScore;
-    //Use of JLabel to put text on the screen in this case "3rd place"
     private JLabel jlThirdPlace;
-    //Use of JLabel to put text on the screen in this case the highscore value of the 3rd place
     private JLabel jlThirdScore;
-    //Use of JLabel to put text on the screen in this case "4th place"
     private JLabel jlFourthPlace;
-    //Use of JLabel to put text on the screen in this case the highscore value of the 4th place
     private JLabel jlFourthScore;
-    //Use of JLabel to put text on the screen in this case "5th place"
     private JLabel jlFifthPlace;
-    //Use of JLabel to put text on the screen in this case the highscore value of the 5th place
     private JLabel jlFifthScore;
-    //Use of JButton to add a button to the screen in this case btnBack
     private JButton btnBack;
 
     /**
-     * Created the constructor for this class used to create objects of the variables
-     * and assign values to them because they are private variables.
+     * Constructor used when the object is created to initialize the objects data
      */
     public Highscore()
     {
         /**
-         * Adds the layout and sets the layout to null so i can set the bounds myself
+         * Adds the layout
          */
         setLayout(null);
         //Sets the backgroundcolor of the panel to yellow
         setBackground(Color.YELLOW);
 
         /**
-         * Take the declared object of jlHighscore
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlHighscore = new JLabel("Highscore (Top 5)");
         jlHighscore.setBounds(275, 20, 161, 33);
         add(jlHighscore);
 
         /**
-         * Take the declared object of jlFirstPlace
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlFirstPlace = new JLabel("1st place #SnakeGeneral");
         jlFirstPlace.setBounds(225, 70, 200, 33);
         add(jlFirstPlace);
 
         /**
-         * Take the declared object of jlFirstScore
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlFirstScore = new JLabel("");
         jlFirstScore.setBounds(225, 85, 200, 33);
         add(jlFirstScore);
 
         /**
-         * Take the declared object of jlSecondPlace
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlSecondPlace = new JLabel("2nd place #SnakeColonel");
         jlSecondPlace.setBounds(225, 130, 200, 33);
         add(jlSecondPlace);
 
         /**
-         * Take the declared object of jlSecondScore
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlSecondScore = new JLabel("");
         jlSecondScore.setBounds(225, 145, 200, 33);
         add(jlSecondScore);
 
         /**
-         * Take the declared object of jlThirdPlace
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlThirdPlace = new JLabel("3rd place #SnakeLieutenantColonel");
         jlThirdPlace.setBounds(225, 190, 200, 33);
         add(jlThirdPlace);
 
         /**
-         * Take the declared object of jlThirdScore
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlThirdScore = new JLabel("");
         jlThirdScore.setBounds(225, 205, 200, 33);
         add(jlThirdScore);
 
         /**
-         * Take the declared object of jlFourthPlace
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlFourthPlace = new JLabel("4th place #SnakeMajor");
         jlFourthPlace.setBounds(225, 250, 200, 33);
         add(jlFourthPlace);
 
         /**
-         * Take the declared object of jlFourthScore
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlFourthScore = new JLabel("");
         jlFourthScore.setBounds(225, 265, 200, 33);
         add(jlFourthScore);
 
         /**
-         * Take the declared object of jlFifthPlace
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlFifthPlace = new JLabel("5th place #SnakeCaptain");
         jlFifthPlace.setBounds(225, 310, 200, 33);
         add(jlFifthPlace);
 
         /**
-         * Take the declared object of jlFifthScore
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlFifthScore = new JLabel("");
         jlFifthScore.setBounds(225, 325, 200, 33);
         add(jlFifthScore);
 
         /**
-         * Take the declared object of btnBack
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
-         * Uses ImageIcon to attach the picture "back.png" to the button
+         * Creating JButton, places and adds it to the panel
+         * and gives it a picture called "back"
          */
         Icon back = new ImageIcon(getClass().getResource("back.png"));
         btnBack = new JButton(" BACK TO MENU", back);

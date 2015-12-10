@@ -11,8 +11,15 @@ public class Scores {
     private int score;
     private UserInfo opponent;
 
-    public Scores()
-    {}
+    public Scores(int _id, UserInfo _user, Game _game, UserInfo _opponent, int _score)
+    {
+        _id = id;
+        _user = user;
+        _game = game;
+        _opponent = opponent;
+        _score = score;
+
+    }
 
     public int getId()
     {

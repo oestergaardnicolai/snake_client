@@ -17,10 +17,24 @@ import javax.swing.*;
  * Created by nicolaiostergaard on 26/11/15.
  */
 
+/**
+ * This class establishes the connection to the server
+ * it contains the few variables (hostAdress and port number)
+ * that gets the connection plus GET, PUT, DELETE and POST
+ * request which is the HTTP methods for read, create, update
+ * and delete
+ */
+
 public class ServerConnection {
 
 
     public ServerConnection() {
+        /**
+         * Initialize the variables
+         * (These could be in a independent
+         * config file, but since there only are
+         * two variables it got in the sc class).
+         */
         this.hostAddress = "http://localhost";
         this.port = 22381;
     }
@@ -37,8 +51,11 @@ public class ServerConnection {
     }
 
 
-
-
+    /**
+     * This method gets (reads) something from the server.
+     * @param path Which message we want from the server
+     * @return
+     */
     public String get(String path) {
 
         try {
@@ -64,6 +81,13 @@ public class ServerConnection {
         }
     }
 
+    /**
+     * This method posts (creates) something in the server
+     * @param json heterogenious format
+     * @param path the path of where the posts should be created
+     * @param frame
+     * @return
+     */
     public String post(String json, String path, Frame frame) {
 
         try {
@@ -107,6 +131,12 @@ public class ServerConnection {
         }
     }
 
+    /**
+     * This method puts (updates) something to the server
+     * @param path the way through the server to the location we want it updated
+     * @param json Heterogenious format
+     * @return
+     */
     public String put(String path, String json){
         try {
 
@@ -128,6 +158,11 @@ public class ServerConnection {
         return null;
     }
 
+    /**
+     * This method deletes something
+     * @param path the way through the server to the location were we want something deleted
+     * @return
+     */
     public String delete(String path) {
 
         try {

@@ -362,39 +362,86 @@ public class Controller
     }//End of inner class
 
     /**
-     *
+     * Creates inner class for the play panel
      */
     private class PlayActionListener implements ActionListener{
+        /**
+         * Another actionPerformed method for handling button events
+         * @param event
+         */
         public void actionPerformed(ActionEvent event){
 
+            /**
+             * What happens if the user clicks on the btnback
+             */
             if(event.getSource() == frame.getPlay().getBtnBack()){
+                /**
+                 * Shows the usermenu
+                 */
                 frame.show(Frame.USERMENU);
 
             }
+            /**
+             * what happens if the user clicks on the create game button
+             */
             else if(event.getSource() == frame.getPlay().getBtnCreateGame())
             {
+                /**
+                 * Shows the create game screen
+                 */
                 frame.show(Frame.CREATEGAME);
             }
+            /**
+             * What happens if the user clicks on the join game button
+             */
             else if (event.getSource() == frame.getPlay().getBtnJoinGame()){
 
+                /**
+                 * Shows the join game screen,
+                 * shows the existing games in the combobox
+                 */
                 showExistingGames(frame);
                 frame.show(Frame.JOINGAME);
                 frame.getJoinGame().setText();
-            }
+            } //End of if statement
 
-        }
-    }
+        } //End of actionPerformed
+    }//End of inner class
 
+    /**
+     * Creates inner class for the DeleteGame panel
+     */
     private class DeleteGameActionListener implements ActionListener {
+        /**
+         * actionPerofrmed for handling button events
+         * @param event
+         */
         public void actionPerformed(ActionEvent event){
 
+            /**
+             * What happens if the user clicks on the back button
+             */
             if(event.getSource() == frame.getDeleteGame().getBtnBack())
             {
+                /**
+                 * Shows the Usermenu
+                 */
                 frame.show(Frame.USERMENU);
             }
+            /**
+             * What hapens if the user clicks on the delete button
+             */
             else if(event.getSource() == frame.getDeleteGame().getBtnDelete())
             {
+                /**
+                 * gets the getApi method
+                 */
                 getApi();
+                /**
+                 * If the deleteGame method is met, prints out a message
+                 * saying the game is deleted and takes the user back to the
+                 * main menu
+                 */
                 if(deleteGame(frame))
                 {
 
@@ -407,49 +454,89 @@ public class Controller
                 {
                     frame.show(Frame.DELETEGAME);
                 }
-            }
+            }//End of if statement
 
-        }
-    }
+        }//End of actionPerformed
+    }//End of inner class
 
+    /**
+     * Creates inner class for the RateGame panel
+     */
     private class RateGameActionListener implements ActionListener
     {
+        /**
+         * actionPerformed method for handling button events
+         * @param event
+         */
         public void actionPerformed(ActionEvent event)
         {
+            /**
+             * Takes the user back to the main menu if he presses
+             * the back button
+             */
             if(event.getSource() == frame.getRateGame().getBtnBack())
             {
                 frame.show(Frame.USERMENU);
-            }
+            } //End of if statement
 
-        }
-    }
+        }//End of actionPerformed
+    }//End of inner class
 
+    /**
+     * Creates the inner class for the Instructions panel
+     */
     private class InstructionsActionListener implements ActionListener
     {
+        /**
+         * actionPerformed for handling button events
+         * @param event
+         */
         public void actionPerformed(ActionEvent event)
         {
+            /**
+             * takes the user to the main menu if he presses the back button
+             */
             if(event.getSource() == frame.getInstructions().getBtnBack())
             {
                 frame.show(Frame.USERMENU);
             }
+            /**
+             * Takes the user to the how to play screen if the presses the how to
+             * play button
+             */
             else if(event.getSource() == frame.getInstructions().getBtnHowToPlay())
             {
                 frame.show(Frame.HOWTOPLAY);
-            }
-        }
-    }
+            }//End of if statement
+        }//End of actionperformed
+    }//end of inner class
 
+    /**
+     * Creates inner class for the how to play panel
+     */
     private class HowToPlayActionListener implements ActionListener
     {
+        /**
+         * actionPerformed method for handling button events
+         * @param event
+         */
         public void actionPerformed(ActionEvent event)
         {
+            /**
+             * Takes the user to the instructions screen if he
+             * presses the back button
+             */
             if(event.getSource() == frame.getHowToPlay().getBtnBack())
             {
                 frame.show(Frame.INSTRUCTIONS);
-            }
-        }
-    }
+            }//End of if statement
+        }//End of actionPerformed
+    }//End of inner class
 
+    /**
+     * Contains only a back button since i didnt got the time
+     * for implementing this function
+     */
     private class SignUpActionListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             if (event.getSource() == frame.getSignUp().getBtnBack()) {
@@ -458,6 +545,9 @@ public class Controller
         }
     }
 
+    /**
+     * Creates inner class for the createGame panel
+     */
     private class CreateGameActionListener implements ActionListener
     {
         /**
@@ -467,154 +557,287 @@ public class Controller
         public void actionPerformed(ActionEvent event)
         {
 
+            /**
+             * What happens if the user clicks on the create button
+             */
             if (event.getSource() == frame.getCreateGame().getBtnCreate()) {
 
+                /**
+                 * Gets the getApi method
+                 */
                 getApi();
+                /**
+                 * if createGame are met, the user has created the
+                 * game and gets back to the main menu
+                 */
                 if (createGame(frame, ui, uo))
                 {
                     frame.show(Frame.USERMENU);
                 }
 
             }
+            /**
+             * Takes the user back to the play menu if he clicks on the
+             * back button
+             */
             else if (event.getSource() == frame.getCreateGame().getBtnBack())
             {
                 frame.show(Frame.PLAYSNAKE);
-            }
-        }
-    }
+            }//End of if statement
+        }//End of actionPerformed
+    }//End of inner class
 
+    /**
+     * Gets the get Uniform Interface from the
+     * ServerConnection class
+     */
     public void getApi(){
 
         sc.get("");
     }
 
 
-
+    /**
+     * Creates Login method
+     * @return
+     */
     public boolean loginReg() {
+        //Exception handler
         try {
 
+            /**
+             * Gets the username and password from the JTextFields
+             */
             String login_password = frame.getUserLogin().getPassword().getText();
             String login_username = frame.getUserLogin().getUsername().getText();
 
 
+            /**
+             * If the password and username matches from the database
+             */
             if (!login_password.equals("") && !login_username.equals(""))
             {
+                /**
+                 * new object of user,
+                 */
                 User uo = new User();
+                /**
+                 * Sets password and username in the user
+                 * class from what the user types in the JTextFields
+                 */
                 uo.setPassword(login_password);
                 uo.setUsername(login_username);
 
+                /**
+                 * Converts java object to json format
+                 */
                 String jo = new Gson().toJson(uo);
+                /**
+                 * sets dispatch equal to the loginparser
+                 * and uses post from ServerConnection to create
+                 * new resources
+                 */
                 String dispatch = login_parser(sc.post(jo, "login/", frame), uo);
 
+                /**
+                 * States what should be done if the dispatch
+                 * equals the "Login successful" message from the server
+                 */
                 if (dispatch.equals("Login successful")){
                     uo1 = uo;
 
+                    /**
+                     * Reads the "users/" message from the server
+                     * + the user id
+                     */
                     sc.parser(sco.get("users/" + uo1.getId() + "/"), uo1);
-
-                    //frame.getUserLogin().ClearLogin();
 
                     return true;
                 }
+                /**
+                 * If the dispatch = "Wrong username or password" message
+                 * then print out an error message to the user
+                 */
                 else if(dispatch.equals("Wrong username or password")){
                     JOptionPane.showMessageDialog(frame, "Something went wrong plz try again",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                /**
+                 * If the dispatch = Error in JSON message,
+                 * print out an error message to the user.
+                 */
                 else if (dispatch.equals("Error in JSON")){
                     JOptionPane.showMessageDialog(frame, "Error in JSON",
                             "Error in JSON", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-        }
-        catch (Exception e){
+            }//End of if statement
+        }//End of try
+        /**
+         * Exception type that prints an error message to the user.
+         */
+        catch (Exception exception){
             JOptionPane.showMessageDialog(frame, "Username or password was incorrect try again",
                     "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
+            /**
+             * Prints the stack trace of the exception to the system
+             */
+            exception.printStackTrace();
+        }// End of catch
         return false;
 
 
-            }
+            }//End of method
 
+    /**
+     * Creates the login parser
+     * @param string
+     * @param uo
+     * @return
+     */
         public String login_parser(String string, User uo)
         {
+            /**
+             * Making a json parser object for reading json data
+             */
             JSONParser jpo = new JSONParser();
             String dispatcho = new String();
             int id =0;
 
             try
             {
+                /**
+                 * Reads the "message" using JSON
+                 * and prints it
+                 */
                 Object dispo = jpo.parse(string);
                 JSONObject jsono = (JSONObject) dispo;
 
                 dispatcho = ((String)jsono.get("message"));
 
                 System.out.println(dispatcho);
+                /**
+                 * Sets id to the userid read from
+                 * server via json
+                 */
                 uo.setId ((long) jsono.get("userid"));
 
+                /**
+                 * returns message
+                 */
                 return dispatcho;
             }
+            /**
+             * Prints stack trace of the exception to the system
+             */
             catch (Exception exception)
             {
                 exception.printStackTrace();
             }
             return null;
-        }
+        } //End of parser
 
 
 
     //______________________________________________________________
 
 
-    // Create Game
+    /**
+     * Creates the create game method
+     * @param frame object of Frame
+     * @param ui object of UserInfo
+     * @param uo object of User
+     * @return
+     */
     public boolean createGame(Frame frame, UserInfo ui, User uo)
     {
         try {
+            /**
+             * Takes the field name, mapsize and controls from what the user
+             * types in the JTextFields
+             */
             String field_name = frame.getCreateGame().getField_name().getText();
             int mapsize = frame.getCreateGame().getMapsize();
             String controls = frame.getCreateGame().getControls().getText();
 
+            /**
+             * stating what happens if mapsize isnt 0 and controls and field name
+             * is equal to the input
+             */
             if (!field_name.equals("") && mapsize!= 0 && !controls.equals("")) {
+                /**
+                 * New object of Game class
+                 */
                 Game go = new Game();
 
-
+                /**
+                 * Sets id, controls,
+                 * name of the field,
+                 * mapsize and host.
+                 */
                 ui.setId(uo.getId());
                 ui.setControls(controls);
                 go.setName(field_name);
                 go.setMapSize(mapsize);
                 go.setHost(ui);
 
+
                 /**
-                 * Gson to Json
+                 * Converts java object to Json format
+                 * (Gson To Json gtj)
                  */
                 String gtj = new Gson().toJson(go);
 
+                /**
+                 * sets dispatch = the createGame_parser and
+                 * creates gtj object
+                 */
                 String dispatch = createGame_parser(sc.post(gtj, "games/", frame));
 
 
+                /**
+                 * If the dispatch = the game name, it prints a message
+                 * to the user about the creation of the game
+                 */
                 if (dispatch.equals(go.getName())) {
                     JOptionPane.showMessageDialog(frame, "Game created, time to challenge friends in "
                             + go.getName(), "Game created", JOptionPane.PLAIN_MESSAGE);
 
                     return true;
-                } else if (dispatch.equals("Errors in JSON") || dispatch.equals("Something went wrong")) {
+
+                }
+                /**
+                 * Error message printed to the user
+                 */
+                else if (dispatch.equals("Errors in JSON") || dispatch.equals("Something went wrong")) {
                     JOptionPane.showMessageDialog(frame, "Something went wrong probably a JSON Error",
                             "Error in JSON", JOptionPane.ERROR_MESSAGE);
-                } else {
+                }
+                /**
+                 * Error message besides JSON error
+                 */
+                else
+                {
                     System.out.println("Error of other kinds");
                 }
 
             }
         }
-
         catch(Exception exception)
         {
             exception.printStackTrace();
         }
 
         return false;
-    }
+    }//End of method
 
-    //Create game parser
+    /**
+     * Creates the createGame parser works the same way
+     * as the earlier parsers.
+     * reads name via Json, creates a new object of game
+     * and sets the name of the game
+     * @param s (string)
+     * @return
+     */
     public String createGame_parser(String s)
     {
         JSONParser jpo = new JSONParser();
@@ -637,21 +860,31 @@ public class Controller
             exception.printStackTrace();
         }
         return null;
-    }
+    }// End of parser
 
 //_________________________________________________
 
-    //Delete game
+    /**
+     * DeleteGame method
+     * @param frame object of Frame
+     * @return
+     */
     public boolean deleteGame(Frame frame)
     {
 
         try
         {
 
+            /**
+             * Gets the id from the user
+             */
             String id = frame.getDeleteGame().getInsertgameid().getText();
             System.out.println(id);
 
-
+            /**
+             * Soft deletes the game via id and prints a message to
+             * the user
+             */
             if(!id.equals(""))
             {
                 String dispatch = deleteGame_parser(sc.delete("games/" + id));
@@ -660,6 +893,10 @@ public class Controller
                 {
                     return true;
                 }
+                /**
+                 * If the dispatch = the message, print out error message
+                 * to the user
+                 */
                 else if(dispatch.equals("Failed. Game was not deleted"))
                 {
                     JOptionPane.showMessageDialog(frame, "Game id does not exist try another", "Error"
@@ -674,17 +911,24 @@ public class Controller
             JOptionPane.showMessageDialog(frame, "Error", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return false;
-    }
+    }//End of method
 
-    //Delete game parser
-    public String deleteGame_parser(String string)
+    /**
+     * deleteGame parser
+     * This parser reads the "message" message from
+     * JSON so other methods than just deletegame uses
+     * this parser to avoid redundant code
+     * @param s (String)
+     * @return
+     */
+    public String deleteGame_parser(String s)
     {
         JSONParser jpo = new JSONParser();
         String dispatch = new String();
 
         try
         {
-            Object disp = jpo.parse(string);
+            Object disp = jpo.parse(s);
             JSONObject jsono = (JSONObject) disp;
 
             dispatch = ((String) jsono.get("message"));
@@ -700,13 +944,23 @@ public class Controller
 //__________________________________________
 
 
+    /**
+     * Creates method for joining an existing game
+     * @param frame Object of Frame
+     * @param uo Object of User
+     * @param ui Object of UserInfo
+     * @param go Object of Game
+     * @return
+     */
     public boolean joinExistingGame(Frame frame, User uo, UserInfo ui, Game go)
     {
         Gson gson;
         try {
 
+            //Sets gson = to Gson
             gson = new Gson();
 
+            //Sets controls to the control JTextField
             String controls = frame.getJoinGame().getControls();
 
 
@@ -717,10 +971,17 @@ public class Controller
                 ui.setControls(controls);
                 go.setOpponent(ui);
 
+                //Converts gtj object to json format
                 String gtj = gson.toJson(go);
 
+                /**
+                 * Updates the message "games/join" from the server
+                 */
                 String dispatch = deleteGame_parser(sc.put("games/join", gtj));
 
+                /**
+                 * Updates the winner
+                 */
                 if(dispatch.equals("Game was joined"))
                 {
                     Game go1 = getGame(sc.put("games/start", gtj));
@@ -736,11 +997,18 @@ public class Controller
                         return false;
                     }
                 }
+                /**
+                 * prints error message because the game is closed
+                 * (because it has the status finished).
+                 */
                 else if(dispatch.equals("Game closed"))
                 {
                     JOptionPane.showMessageDialog(frame, "Game closed",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                /**
+                 * Prints error message about json converting problems
+                 */
                 else if (dispatch.equals("Error in JSON"))
                 {
                     JOptionPane.showMessageDialog(frame, "Error in JSON",
@@ -757,7 +1025,12 @@ public class Controller
 
     //_________________________________________
 
-    public Game getGame(String string)
+    /**
+     * Creates getGame method
+     * @param s string
+     * @return
+     */
+    public Game getGame(String s)
     {
         try
         {
@@ -766,7 +1039,7 @@ public class Controller
             /**
              * parses the JSON back into a Game
              */
-            Game go = gson.fromJson(string, Game.class);
+            Game go = gson.fromJson(s, Game.class);
 
             return go;
         }
@@ -781,10 +1054,19 @@ public class Controller
     }
 
 
+    /**
+     * Creates the showExistingGames method used for showing
+     * the games in the combobox
+     * @param frame
+     */
     public void showExistingGames(Frame frame)
     {
         try
         {
+            /**
+             * Game object array sets = showExistingGames parser
+             * which reads the "games/open" message
+             */
             Game[] go = showExistingGames_parser(sc.get("games/open/"));
 
             for(Game go1 : go)
@@ -808,13 +1090,18 @@ public class Controller
         }
     }
 
-    public Game[] showExistingGames_parser(String string)
+    /**
+     * Converts json into a game object
+     * @param s
+     * @return
+     */
+    public Game[] showExistingGames_parser(String s)
     {
         try
         {
             Gson gson = new Gson();
 
-            Game[] go = gson.fromJson(string, Game[].class);
+            Game[] go = gson.fromJson(s, Game[].class);
 
             return go;
         }
@@ -825,6 +1112,13 @@ public class Controller
         return null;
     }
 
+    /**
+     * Creates showExistingGamesInfo method
+     * reads the existing games and sets it so the user
+     * can see it
+     * @param frame
+     * @return
+     */
     public Game showExistingGamesInfo(Frame frame) {
         try {
             String dispatch = frame.getJoinGame().getBox().getSelectedItem().toString();
@@ -841,6 +1135,11 @@ public class Controller
         return null;
     }
 
+    /**
+     * Creates Highscore method which reads the "scores/" from the server
+     * and sets it in the gui in the client
+     * @param frame
+     */
     public void highscore(Frame frame)
     {
         try
@@ -861,6 +1160,12 @@ public class Controller
         }
     }
 
+    /**
+     * Highscore parser that reads the highscore sent from the
+     * Highscore class in the server.
+     * @param s
+     * @return
+     */
     public ScoresInfo highscore_parser(String s){
 
         JSONParser jpo = new JSONParser();
@@ -900,4 +1205,4 @@ public class Controller
     }
 
 
-}
+} //End of the constructor class.

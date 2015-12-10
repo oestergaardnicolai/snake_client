@@ -150,5 +150,7 @@ public class SignUp extends JPanel {
         btnSignUp.addActionListener(al);
         btnBack.addActionListener(al);
     }
+
+
 }
 

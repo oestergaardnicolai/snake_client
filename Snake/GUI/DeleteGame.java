@@ -9,8 +9,8 @@ import java.awt.event.*;
 
 /**
  * This class contains the Delete Game
- * Extended JPanel which allow us to make windows extends Component, Container and JComponent
- * Used to group other components together.*/
+ * Extends JPanel
+ */
 
 public class DeleteGame extends JPanel
 {
@@ -18,54 +18,40 @@ public class DeleteGame extends JPanel
      * Declare object Variables
      */
 
-    //Use of JLabel to put text on the screen in this case "DELETE GAME"
+    //Declare variables
     private JLabel jlDeleteGame;
-    //Use of JLabel to put text on the screen in this case "Insert Game ID"
     private JLabel jlInsertGameId;
-    //Use of JTextField to create a JTextField to collect data from the user in this case the game id
     private JTextField Insertgameid;
-    //Use of JButton to create a button in this case to delete a game
     private JButton btnDelete;
-    //Use of JButton to create a button in this case to give the user
-    //the opportunity to go back to the main menu.
     private JButton btnBack;
 
     /**
-     * Created the constructor for this class used to create objects of the variables
-     * and assign values to them because they are private variables.
+     * Constructor used when the object is created to initialize the objects data
      */
     public DeleteGame()
     {
         /**
-         * Adds the layout and sets the layout to null so i can set the bounds myself
+         * Adds the layout
          */
         setLayout(null);
 
         /**
-         * Take the declared object of jlDeleteGame
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlDeleteGame = new JLabel("DELETE GAME");
         jlDeleteGame.setBounds(275, 20, 170, 33);
         add(jlDeleteGame);
 
         /**
-         * Take the declared object of jlInsertGameId
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jlabel, places and adds it to the panel
          */
         jlInsertGameId = new JLabel("Insert Game ID ");
         jlInsertGameId.setBounds(225, 80, 191, 33);
         add(jlInsertGameId);
 
         /**
-         * Take the declared object of InsertGameid
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating jTextField, places and adds it to the panel
+         * and sets the length of the textfield
          */
         Insertgameid = new JTextField();
         Insertgameid.setBounds(225, 130, 236, 39);
@@ -73,21 +59,15 @@ public class DeleteGame extends JPanel
         Insertgameid.setColumns(10);
 
         /**
-         * Take the declared object of btnDelete
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
+         * Creating JButton, places and adds it to the panel
          */
         btnDelete = new JButton("Delete ->");
         btnDelete.setBounds(225, 180, 171, 33);
         add(btnDelete);
 
         /**
-         * Take the declared object of btnBack
-         * and creates a new instance and initializes it in our values
-         * Sets the bounds of the object
-         * Adds the object to the screen
-         * Uses ImageIcon to get the "back.png" picture and assign it to the button
+         * Creating JButton, places and adds it to the panel
+         * and gives it a picture called "back"
          */
         Icon back = new ImageIcon(getClass().getResource("back.png"));
         btnBack = new JButton("<- Back", back);
@@ -98,11 +78,7 @@ public class DeleteGame extends JPanel
     }
 
     /**
-     * Creates get method for Insertgameid:
-     * Defines object to a JTextField and returns something of that object
-     * Returns the data to the method caller (in this case the Insertgameid
-     * which is the JTextField set on the window for the user to type in the gameid
-     * of the game the user wants deleted).
+     * Creates getter method for Insergameid
      * @return
      */
     public JTextField getInsertgameid()
@@ -111,10 +87,7 @@ public class DeleteGame extends JPanel
     }
 
     /**
-     * Creates get method for btnDelete:
-     * Defines object to a JButton and returns something of that object
-     * Returns the data to the method caller (in this case the btnDelete
-     * which is the button added to the screen so the user can delete a game).
+     * Creates getter method for btnDelete
      * @return
      */
     public JButton getBtnDelete()
@@ -123,10 +96,7 @@ public class DeleteGame extends JPanel
     }
 
     /**
-     * Creates get method for btnBack:
-     * Defines object to a JButton and returns something of that object
-     * Returns the data to the method caller (in this case the btnBack
-     * which is the button added to the screen so the user can go back to the main menu).
+     * Creates getter method for btnBack
      * @return
      */
     public JButton getBtnBack()
@@ -135,10 +105,8 @@ public class DeleteGame extends JPanel
     }
 
     /**
-     * Creates ActionListeners for this panel to handle events
-     * in this case it defines what should be done when the user
-     * clicks on the button called btnBack or btnDelete.
-     * @param al
+     * Creates ActionListeners for event handling of this panel
+     * @param al is an object of ActionListener
      */
     public void addActionListener(ActionListener al)
     {
