@@ -7,6 +7,12 @@ import java.awt.*;
 /**
  * Created by nicolaiostergaard on 19/11/15.
  */
+
+/**
+ * This class creates the GUI of the SignUp panel
+ * this clas contains only button handle events
+ * but handles no data, thought for future development
+ */
 public class SignUp extends JPanel {
 
 

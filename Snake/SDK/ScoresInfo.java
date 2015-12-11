@@ -7,6 +7,7 @@ public class ScoresInfo {
 
     //Class created for getting the information about the highscore locations
 
+    //Declaring variables
     private long st;
     private long nd;
     private long rd;
@@ -16,6 +17,7 @@ public class ScoresInfo {
     public ScoresInfo() {
     }
 
+    //Creates getters and setters
     public long getSt() {
         return st;
     }

@@ -2,6 +2,7 @@ package snake_client.Snake.LOGIC;
 
 //GUI imports
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import snake_client.Snake.GUI.Frame;
 
 //SDK imports
@@ -650,7 +651,7 @@ public class Controller
                      * Reads the "users/" message from the server
                      * + the user id
                      */
-                    sc.parser(sco.get("users/" + uo1.getId() + "/"), uo1);
+                    parser(sco.get("users/" + uo1.getId() + "/"), uo1);
 
                     return true;
                 }
@@ -737,6 +738,22 @@ public class Controller
         } //End of parser
 
 
+    public void parser(String Json, User uo) {
+        JSONParser jpo = new JSONParser();
+
+        try {
+            Object o = jpo.parse(Json);
+            JSONObject jsonObject = (JSONObject) o;
+
+            uo.setEmail((String) jsonObject.get("Email"));
+            uo.setFirst_name((String) jsonObject.get("FirstName"));
+            uo.setLast_name((String) jsonObject.get("LastName"));
+            uo.setStatus((String) jsonObject.get("Active"));
+            //user.setCreated((Date) jsonObject.get("Created"));
+        } catch (ParseException event) {
+            event.printStackTrace();
+        }
+    }
 
     //______________________________________________________________
 
@@ -966,6 +983,7 @@ public class Controller
 
             if(!controls.equals(""))
             {
+
                 System.out.println(go.getGameId());
                 ui.setId(uo.getId());
                 ui.setControls(controls);
@@ -1203,6 +1221,5 @@ public class Controller
         }
         return null;
     }
-
 
 } //End of the constructor class.

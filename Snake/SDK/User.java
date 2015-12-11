@@ -5,8 +5,14 @@ import java.sql.Date;
 /**
  * Created by nicolaiostergaard on 26/11/15.
  */
+
+/**
+ * This class contains the variables for the user
+ */
+
 public class User {
 
+    //Declare variables
     private long id;
     private String firstName;
     private String lastName;
@@ -19,6 +25,8 @@ public class User {
 
     public User()
     {}
+
+    //Creates
         public long getId()
         {
             return id;

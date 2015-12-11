@@ -3,6 +3,13 @@ package snake_client.Snake.SDK;
 /**
  * Created by nicolaiostergaard on 27/11/15.
  */
+
+/**
+ * This class contains the variables and a constructor of
+ * the scores, most of the get methods and set methods
+ * arent used thougt.
+ */
+
 public class Scores {
 
     private int id;

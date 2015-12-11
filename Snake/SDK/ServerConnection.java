@@ -23,6 +23,7 @@ import javax.swing.*;
  * that gets the connection plus GET, PUT, DELETE and POST
  * request which is the HTTP methods for read, create, update
  * and delete
+ * This class is based on the prototype in GitHub
  */
 
 public class ServerConnection {
@@ -113,23 +114,6 @@ public class ServerConnection {
         return "";
     }
 
-
-    public void parser(String Json, User uo) {
-        JSONParser jpo = new JSONParser();
-
-        try {
-            Object o = jpo.parse(Json);
-            JSONObject jsonObject = (JSONObject) o;
-
-            uo.setEmail((String) jsonObject.get("Email"));
-            uo.setFirst_name((String) jsonObject.get("FirstName"));
-            uo.setLast_name((String) jsonObject.get("LastName"));
-            uo.setStatus((String) jsonObject.get("Active"));
-            //user.setCreated((Date) jsonObject.get("Created"));
-        } catch (ParseException event) {
-            event.printStackTrace();
-        }
-    }
 
     /**
      * This method puts (updates) something to the server

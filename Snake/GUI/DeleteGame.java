@@ -14,9 +14,6 @@ import java.awt.event.*;
 
 public class DeleteGame extends JPanel
 {
-    /**
-     * Declare object Variables
-     */
 
     //Declare variables
     private JLabel jlDeleteGame;
